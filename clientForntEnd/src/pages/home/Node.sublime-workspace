@@ -1,0 +1,601 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"a",
+				"transparent"
+			],
+			[
+				"text-",
+				"text-shadow"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"if",
+				"if\tkeyword"
+			],
+			[
+				"todo",
+				"todoService\tproperty"
+			],
+			[
+				"to",
+				"todo-service\tscript"
+			],
+			[
+				"pro",
+				"providers\tdirectory"
+			],
+			[
+				"get",
+				"getApiURL\tmethod"
+			],
+			[
+				"se",
+				"setlocation\tscript"
+			],
+			[
+				"place",
+				"places\tparameter"
+			],
+			[
+				"rem",
+				"removeFile\tmethod"
+			],
+			[
+				"Fil",
+				"FileError\talias"
+			],
+			[
+				"mo",
+				"moveFile\tmethod"
+			],
+			[
+				"plac",
+				"placesService\tproperty"
+			],
+			[
+				"lo",
+				"location"
+			],
+			[
+				"im",
+				"imageUrl"
+			],
+			[
+				"pl",
+				"placesService\tproperty"
+			],
+			[
+				"locatio",
+				"locationIsSet\tproperty"
+			],
+			[
+				"myPara",
+				"myPara3"
+			],
+			[
+				"myPar",
+				"myPara1"
+			],
+			[
+				"loca",
+				"locationIsSet\tproperty"
+			],
+			[
+				"na",
+				"navParams\tproperty"
+			],
+			[
+				"impor",
+				"import\tkeyword"
+			],
+			[
+				"set",
+				"set-location\tdirectory"
+			],
+			[
+				"ad",
+				"addIngredients\tmethod"
+			],
+			[
+				"ingre",
+				"ingredients\tproperty"
+			],
+			[
+				"ing",
+				"ingredients\tproperty"
+			],
+			[
+				"ingredi",
+				"ingredients\tparameter"
+			],
+			[
+				"recip",
+				"recipe.service\tscript"
+			],
+			[
+				"in",
+				"ingredients\tparameter"
+			],
+			[
+				"i",
+				"ingredient.model\tscript"
+			],
+			[
+				"ge",
+				"getIngredient\tmethod"
+			],
+			[
+				"shop",
+				"shopping-list.service\tscript"
+			],
+			[
+				"impo",
+				"import\tkeyword"
+			],
+			[
+				"Recipe",
+				"RecipeService\talias"
+			],
+			[
+				"rec",
+				"recipeService\tproperty"
+			],
+			[
+				"imp",
+				"import\tkeyword"
+			],
+			[
+				"reci",
+				"recipe.service\tscript"
+			],
+			[
+				"accoun",
+				"accountStatus\tparameter"
+			],
+			[
+				"acc",
+				"accountsService\tproperty"
+			],
+			[
+				"account",
+				"accountStatus\tparameter"
+			],
+			[
+				"Loading",
+				"LoadingController\tclass"
+			],
+			[
+				"MenuC",
+				"MenuController\tclass"
+			],
+			[
+				"Sig",
+				"SignupPage\tclass"
+			],
+			[
+				"Shopping",
+				"ShoppingListService\tclass"
+			],
+			[
+				"re",
+				"recipesService\tproperty"
+			],
+			[
+				"ingredie",
+				"ingredients\tlet"
+			],
+			[
+				"nu",
+				"number\tkeyword"
+			],
+			[
+				"Recip",
+				"RecipePage\tclass"
+			],
+			[
+				"popTo",
+				"popToRoot\tmethod"
+			],
+			[
+				"Toast",
+				"ToastController\tclass"
+			],
+			[
+				"Form",
+				"FormArray\tclass"
+			],
+			[
+				"Action",
+				"ActionSheetController\tclass"
+			],
+			[
+				"Req",
+				"REQUIRED_VALIDATOR\tconst"
+			],
+			[
+				"required",
+				"RequiredValidator\tclass"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "i",
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Unix",
+				"name": "i"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 124.0,
+		"last_filter": "Package Control: in",
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"git:com",
+				"git: commit"
+			],
+			[
+				"git:sta",
+				"git: status"
+			],
+			[
+				"git:add",
+				"git: add (edit)"
+			],
+			[
+				"git pu",
+				"git: push"
+			],
+			[
+				"g",
+				"git: branch"
+			]
+		],
+		"width": 461.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/alihamza/.config/sublime-text-3/Packages/DocBlockr/Base File.sublime-settings",
+		"/home/alihamza/.config/sublime-text-3/Packages/JsFormat/JsFormat.sublime-settings",
+		"/home/alihamza/.config/sublime-text-3/Packages/JsPrettier/JsPrettier.sublime-settings",
+		"/home/alihamza/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/alihamza/.config/sublime-text-3/Packages/DocBlockr_Python/DocblockrPython.sublime-settings",
+		"/home/alihamza/.config/sublime-text-3/Packages/DocBlockr/README.md",
+		"/home/alihamza/.config/sublime-text-3/Packages/DocBlockr/LICENSE",
+		"/home/alihamza/.config/sublime-text-3/Packages/User/Base File.sublime-settings",
+		"/home/alihamza/786/Algorithm/up/ION2/TK_Project/TeamCharlie_SLT/clientFrontend/src/theme/variables.scss",
+		"/home/alihamza/786/Algorithm/up/ION2/TK_Project/TeamCharlie_SLT/clientFrontend/src/pages/home/home.html",
+		"/home/alihamza/786/Algorithm/up/ION2/TK_Project/TeamCharlie_SLT/clientFrontend/src/pages/home/home.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/app/app.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/app/app.component.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/TK_Project/TeamCharlie_SLT/clientFrontend/src/pages/home/home.scss",
+		"/home/alihamza/786/Algorithm/up/ION2/TK_Project/TeamCharlie_SLT/clientFrontend/src/pages/tabs/tabs.html",
+		"/home/alihamza/786/Algorithm/up/ION2/TK_Project/TeamCharlie_SLT/clientFrontend/src/app/app.module.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/app/app.module.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/add-place/add-place.module.ts",
+		"/home/alihamza/786/Algorithm/javaScript/javaScriptClientDOM.html",
+		"/home/alihamza/786/Algorithm/up/N/max/MEAN/seed-project/seed-project/assets/app/app.component.html",
+		"/home/alihamza/786/Algorithm/up/N/max/MEAN/seed-project/seed-project/app.js",
+		"/home/alihamza/786/Algorithm/nodejs/nodejs/basic/module1.js",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/client/src/providers/todo-service/todo-service.ts",
+		"/home/alihamza/786/Riyad_Data/practice_tk_project/kk_fashio/0.0.1V_ShoppingCart/shpping-cart/routes/user.js",
+		"/home/alihamza/786/Riyad_Data/practice_tk_project/kk_fashio/0.0.1V_ShoppingCart/shpping-cart/models/cart.js",
+		"/home/alihamza/786/Riyad_Data/practice_tk_project/kk_fashio/0.0.1V_ShoppingCart/shpping-cart/models/user.js",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/edit-recipe/edit-recipe.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/recipes/recipes.ts",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/client/src/pages/home/home.html",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/testProject/todo-routes.js",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/testProject/config.json",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/client/src/providers/app-settings/app-settings.ts",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/client/src/pages/home/home.ts",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/client/src/app/app.module.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/add-place/add-place.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/signin/signin.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/shopping-list/shopping-list.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/services/places.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/set-location/set-location.module.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/home/home.ts",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/add-place/app.module.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/app/app.module.ts",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/place/place.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/config.xml",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/place/place.html",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/home/home.ts",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/testProject/todo.js",
+		"/home/alihamza/786/Algorithm/nodejs/IonicPlusNode/testProject/server.js",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/home/home.html",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/services/places.ts",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/app/app.module.ts",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/set-location/set-location.module.ts",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/place/place.scss",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/add-place/add-place.scss",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/home/home.module.ts",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/place/place.html",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/place/page.module.ts",
+		"/home/alihamza/Downloads/Section-Code-Finished/Section Code (Finished)/src/pages/add-place/add-place.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/models/place.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/place/place.ts",
+		"/home/alihamza/.config/sublime-text-3/Packages/User/JsPrettier.sublime-settings",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/ionic.config.json",
+		"/tmp/tmpd9t_d7/Downloads/ add-place.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/set-location/set-location.html",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/add-place/add-place.html",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/place/place.scss",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/place/place.module.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/services/places",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/set-location/set-location.ts",
+		"/home/alihamza/786/Algorithm/javaScript/javaScript.html",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/set-location/set-location.scss",
+		"/home/alihamza/786/Algorithm/up/Section-Code-Finished/Section Code (Finished)/src/pages/add-place/add-place.html",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/home/home.scss",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/add-place/add-place.scss",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/app/app.html",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/pages/Section-Code-Finished/Section Code (Finished)/src/pages/add-place/add-place.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/app/app.component.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/app/app.scss",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/node_modules/.bin/mkdirp",
+		"/home/alihamza/786/Algorithm/up/ION2/Awesome/myAwesome/src/models/location.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/shopping-list/shopping-list.service.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipe.service.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipe-detail/recipe-detail.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipe-detail/recipe-detail.component.html",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/app.module.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/shopping-list/shopping-list.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/shopping-list/shopping-edit/shopping-edit.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipe.model.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/shopping-list/shopping-list.component.html",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/shopping-list/shopping-edit/shopping-edit.component.html",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipes.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipes.component.html",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipe-list/recipe-list.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipe-list/recipe-list.component.html",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/recipes/recipe-list/recipe-item/recipe-item.component.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/services/shopping-list.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/services/recipes.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/database-options/database-options.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/services/auth.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/signup/signup.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/signin/signin.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/shopping-list/shopping-list.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/recipes/recipes.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/sl-opitons/sl-options.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/shopping-list/sl-options/sl-options.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/sigin/sigin.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/services-start/services-start/src/app/app.module.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/services-start/services-start/src/app/app.component.html",
+		"/home/alihamza/786/Algorithm/up/ACLI/services-start/services-start/src/app/account/account.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/services-start/services-start/src/app/account.service.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/services-start/services-start/src/app/app.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/services-start/services-start/src/app/new-account/new-account.component.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/services-start/services-start/src/app/logging.service.ts",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/header/header.component.html",
+		"/home/alihamza/786/Algorithm/up/ACLI/shoppingapp/shopsStore/src/app/shared/dropdown.directive.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/signup/signup.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/recipes-list/recipes-list.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/sigin/sigin.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/recipe/recipe.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/recipe/recipe.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/recipes-list/recipes-list.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/recipe/recipe.scss",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/pages/edit-recipe/edit-recipe.html",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/models/recipe.ts",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/services/recipe.ts",
+		"/home/alihamza/786/Algorithm/nodejs/app.js",
+		"/home/alihamza/786/Algorithm/up/ION2/recipieBook/src/models/ingredient.ts"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"auto_name": "i",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.GitSavvy":
+	{
+		"height": 96.0
+	},
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 102.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.summary-panel":
+	{
+		"height": 102.0
+	},
+	"pinned_build_system": "",
+	"project": "Node.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/786/Algorithm/up/ION2/TK_Project/TeamCharlie_SLT/clientFrontend/src/pages/home/Node.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 325.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
