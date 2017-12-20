@@ -129,7 +129,14 @@ export class HomePage {
                           message: 'Enjoy your tour with cool features',
                           buttons: ['Ok']
                         });
-                          this.navCtrl.push(TabsPage); 
+                        this.navCtrl.setRoot(TabsPage).then(() => {
+                         setInterval(
+                           ()=>{
+                              window.location.reload();
+                            // $state.go($state.current, $stateParams, {reload: true, inherit: false});
+                            },3000
+                          )
+                          });
                           alert.present();
                           form.reset();
                           

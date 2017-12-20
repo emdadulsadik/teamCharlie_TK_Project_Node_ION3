@@ -11,7 +11,7 @@ import { Slides } from 'ionic-angular';
 export class MainIndexPage {
  
  @ViewChild(Slides) slides: Slides;
-
+	
 	imgagesSlides=[
 								
 				{

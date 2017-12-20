@@ -29,8 +29,8 @@ export class MyApp {
   }
 
 
-  onPageLoad(page:any){
-      this.nav.setRoot(page);
+  onPageLoad(){
+      this.nav.setRoot(MainIndexPage);
       this.menuCtr.close();
   }
 }
