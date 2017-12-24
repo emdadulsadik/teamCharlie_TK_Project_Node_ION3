@@ -6,11 +6,11 @@ import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { MainIndexPage } from '../pages/main-index/main-index';
 
-import {SocialActivitiesPage} from '../pages/social-activities/social-activities';
+
+import { TabsPage } from '../pages/tabs/tabs';
+import { UsertabsPage } from '../pages/usertabs/usertabs';
+
 
 
 import { HttpModule } from '@angular/http';
@@ -19,16 +19,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen'
 import { UserSettingsProvider } from '../providers/user-settings/user-settings';
+import { SignupAndSigninPage } from '../pages/signup-and-signin/signup-and-signin';
+import { FeaturesPage } from '../pages/features/features';
+
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
     TabsPage,
-    MainIndexPage,
-    SocialActivitiesPage
+    SignupAndSigninPage,
+    UsertabsPage,
+    FeaturesPage,
+    
   ],
   imports: [
     BrowserModule,
@@ -42,10 +46,11 @@ import { UserSettingsProvider } from '../providers/user-settings/user-settings';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
     TabsPage,
-    MainIndexPage,
-    SocialActivitiesPage
+    SignupAndSigninPage,
+    UsertabsPage,
+    FeaturesPage
+  
   ],
   providers: [
     StatusBar,

@@ -11,7 +11,8 @@ import { Storage } from '@ionic/storage';
  */
 @Injectable()
 export class UserSettingsProvider {
-
+    token:Promise<any>;
+ 
   constructor(public http: Http, private storage: Storage) {
     console.log('Hello UserServiceProvider Provider');
   }
@@ -43,9 +44,19 @@ export class UserSettingsProvider {
             .catch((error: Response) => Observable.throw(error.json()));
     }
 
-
-
-
+    checkAuthentication(){
+      return this.storage.get('token').then((val)=>{
+    return this.token = val;
+  }).catch(
+    (err)=>{
+      console.log(err);
+    }
+  )
   
+    }
+
+
+
+ 
 
 }
