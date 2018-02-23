@@ -17,7 +17,6 @@ import { User } from "../../models/user.model";
 })
 export class HomePage {
 
-
   registers: Observable<any>;
   /**
    * [constructor description]
