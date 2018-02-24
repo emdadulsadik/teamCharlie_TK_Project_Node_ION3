@@ -16,6 +16,8 @@ const appRoutes = require('./routes/app');
 const userRoutesForSignup = require('./routes/signup');
 const userRoutesForSignin = require('./routes/signin');
 
+const UserTrackingRoutes = require('./routes/usertracking');
+
 
 const app = express();
 mongoose.connect('localhost:27017/social-life-tracker');
@@ -48,6 +50,7 @@ app.use((req, res, next)=> {
 
 app.use('/user', userRoutesForSignup);
 app.use('/user', userRoutesForSignin);
+app.use('/usertracking', UserTrackingRoutes );
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler
