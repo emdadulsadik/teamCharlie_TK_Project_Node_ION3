@@ -1,26 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Contact</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  
-<ion-slides zoom="true" pager loop  preventClicks="false" parallax >
-    <ion-slide *ngFor="let imgSlide of imgagesSlides" class="ionBorder">
-        <div class="swiper-zoom-container">
-          <ion-img width="180" height="180" [src]="imgSlide.image"></ion-img>
-        </div>
-          <h2>{{imgSlide.name}}</h2>
-          <p>{{imgSlide.description}}</p>
 
-      <ion-buttons>
-          <button ion-button color="primary">Enter</button>
-      </ion-buttons>
+<ion-content padding="">
 
-    </ion-slide>
-
-
-</ion-slides>
 </ion-content>

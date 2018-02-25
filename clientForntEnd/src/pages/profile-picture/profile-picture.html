@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+     
+    <ion-title>Profile Picture</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding="true">
+
+    <input 
+    style="display: none" 
+    type="file" (change)="onFileChanged($event)" 
+    #fileInput>
+  <button (click)="fileInput.click()">Select File</button>
+  <button (click)="onUpload()">Upload!</button>
+   
+</ion-content>
+
+
+
+
+<ion-footer  class="txtPos">
+    <ion-toolbar>
+      <ion-title ><button color="gohstWhite" ion-button clear (click)="goToRootAgain()" > Back</button></ion-title>
+    </ion-toolbar>
+  </ion-footer>

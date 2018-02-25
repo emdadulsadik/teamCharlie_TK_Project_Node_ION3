@@ -61,7 +61,7 @@ router.post('/signin', (req,res,next)=>{
 			if(!user){
 				return res.status(401).json({
 					title: 'Please check again, Loggin failed ',
-					error: {message:'Unauthorized Login Information'}
+					error: {message:'Unauthorized User Information'}
 				});
 			}
 			/**
@@ -72,14 +72,14 @@ router.post('/signin', (req,res,next)=>{
 			if(!passwordCrypt.compareSync(req.body.password,user.password)){
 				return res.status(401).json({
 					title: 'Please check again, Loggin Failed',	
-					message: 'You are successfully logged in',
+					message: 'Password does not matched',
 				})
 			}
 			/**
 			 * [Signing a token with 1 hour of expiration:]
 			 * @type {[type]}
 			 */
-			var token = jwt.sign({user:user},'#md#786!i@6K', { expiresIn: '1h' });
+			var token = jwt.sign({user:user},'Allah', { expiresIn: '1h' });
 			/**
 			 * [message description]
 			 * @type {String}
@@ -91,6 +91,95 @@ router.post('/signin', (req,res,next)=>{
 			});
 		});
 });
+
+
+/**
+ * [description]
+ * @author-Khondakar Readul Islam
+ * @version 1.0.0 
+ * @param  {[type]}   '/:id'         [description]
+ * @param  {Function} (req,res,next) [description]
+ * @return {[type]}                  [description]
+ */
+router.delete('/:id', (req,res,next)=>{
+	UserSignInModel.findById(req.params.id, (err, user)=>{
+		if(err){
+			return res.status(500).json({
+				title: 'Error',
+				error: err
+			});
+		}
+		user.remove((err,result)=>{
+			if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Deleted message',
+                obj: result
+            });
+		});
+
+	});
+});
+
+/**
+ * [description]
+ * @author-Khondakar Readul Islam
+ * @version 1.0.0 
+ * @param  {[type]}   'passUpdate/:id' [description]
+ * @param  {Function} (req,res,next)   [description]
+ * @return {[type]}                    [description]
+ */
+router.patch('/:id',(req,res,next)=>{
+	UserSignInModel.findById(req.params.id,(err,user)=>{
+		if(err){
+			return res.status(500).json({
+				title: 'Error',
+				error: err
+			});
+		}
+		user.password =  passwordCrypt.hashSync(req.body.password, 15);
+		user.save((err,result)=>{
+			if(err){
+				return res.status(500).json({
+					title: 'Error',
+					error: err
+				});
+			}
+			res.status(200).json({
+				message:'Updated Password', 
+				obj:result
+			})
+		})  
+	})
+})
+
+/**
+ * For testing purpose
+ * @author- Khondakar Readul Islam 
+ */
+router.get('/all', (req,res,next)=>{
+	UserSignInModel.find((err, user)=>{
+			
+			if(err){
+				return res.status(500).json({
+					title: 'Error',
+ 					error: err
+				});
+				}
+			
+				res.status(200).json({
+					message: 'Deleted message',
+				obj: user
+				
+			});
+	
+		});
+ })
+
 
 
 module.exports = router;
