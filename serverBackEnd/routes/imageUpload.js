@@ -35,7 +35,7 @@ const multer = require("multer");
  * [UPLOAD_PATH description]
  * @type {String}
  */
-var UPLOAD_PATH = './assets'; 
+var UPLOAD_PATH = './uploads'; 
 
 /**
  * [destination description]
@@ -79,7 +79,7 @@ router.post('/', upload.single('image'), (req, res, next) => {
     let newImage = new ImageUploadModel();
     newImage.filename = req.file.filename;
     newImage.originalName = req.file.originalname;
-    newImage.desc = req.params.desc
+    newImage.desc = req.params.desc;
     newImage.save(err => {
         if (err) {
             return res.sendStatus(400);

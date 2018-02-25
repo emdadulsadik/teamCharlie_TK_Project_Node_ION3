@@ -33,7 +33,8 @@ import { ImageUploadProvider } from '../providers/image-upload/image-upload';
 import { SetActivitiesProvider } from '../providers/set-activities/set-activities';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
-
+import { FileTransfer } from '@ionic-native/file-transfer';
+ 
 @NgModule({
   declarations: [
     MyApp,
@@ -78,6 +79,7 @@ import { Camera } from '@ionic-native/camera';
     NativeGeocoder,
     File,
     Camera,
+    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserSettingsProvider,
     LocationProvider,
