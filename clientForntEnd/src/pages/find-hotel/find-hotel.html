@@ -1,0 +1,32 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>findHotel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating  >Star Point</ion-label>
+      <ion-input type="text"  [(ngModel)]="Start" ></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating   >End Point</ion-label>
+      <ion-input type="text"[(ngModel)]="End" ></ion-input>
+    </ion-item>
+  
+  </ion-list>
+
+  <button ion-button full (click)="calculateAndDisplayRoute()" >Get Direction</button>
+  <div id="right-panel"></div> <br>
+  <div id="map"></div>
+  </ion-content>
