@@ -34,6 +34,7 @@ import { SetActivitiesProvider } from '../providers/set-activities/set-activitie
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
+import { ActivityRecordsProvider } from '../providers/activity-records/activity-records';
  
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     Facebook,
     PlaceServiceProvider,
     ImageUploadProvider,
-    SetActivitiesProvider
+    SetActivitiesProvider,
+    ActivityRecordsProvider
   ]
 })
 export class AppModule {}

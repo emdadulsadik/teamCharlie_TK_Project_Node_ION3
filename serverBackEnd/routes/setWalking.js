@@ -281,7 +281,7 @@ router.patch('/end/:id',(req,res,next)=>{
 
 
 router.get('/walkinglist/:id', (req,res,next)=>{
-    setWalkingModel.find({user:req.params.id,  activity : 'walking'})
+    setWalkingModel.find({user:req.params.id, activity : 'walking'})
     .populate('user')
     .exec((err, walkingdata)=>{
              /**
