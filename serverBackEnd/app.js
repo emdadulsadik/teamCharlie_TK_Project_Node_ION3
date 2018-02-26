@@ -13,17 +13,48 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require("multer");
 const cors = require("cors");
+const socket_io    = require( "socket.io" );
 
 const appRoutes = require('./routes/app');
 const userSignupRoutes = require('./routes/signup');
 const userSigninRoutes = require('./routes/signin');
 const userLocationRoutes = require('./routes/location');
-const userWalkingRoutes = require('./routes/setWalking');
+const userWalkingRoutes = require('./routes/activites');
+const userChatRoutes = require('./routes/chat');
 
 const imageUpload = require('./routes/imageUpload');
 
+var ChatMessage = require('./models/chatMessageModel');
 
 const app = express();
+
+var io           = socket_io();
+app.io           = io;
+
+
+io.on('connection', (socket) => {
+
+    socket.on('join:room', function(chatId) {
+        console.log('join room: ', chatId);
+        socket.join(chatId);
+    });
+
+    socket.on('disconnect', function() {
+        console.log('user left');
+    });
+
+    socket.on('send:chatmessage', function(data) {
+        var newMessage = new ChatMessage();
+        newMessage.chat = data.chatId;
+        newMessage.message = data.message;
+        newMessage.from = data.from;
+
+        newMessage.save((err, msg) => {
+            io.to(msg.chat).emit('chatmessage', msg);
+        });
+    });
+
+});
 // mongoose.connect('mongodb://heroku_vnc0nx9j:j09dr65ttb5t52ul7odda2fofo@ds147118.mlab.com:47118/heroku_vnc0nx9j');
  mongoose.connect('localhost:27017/social-life-tracker');
 
@@ -38,7 +69,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 
 
 /**
@@ -59,6 +90,7 @@ app.use('/user', userSignupRoutes);
 app.use('/user', userSigninRoutes);
 app.use('/user', userLocationRoutes);
 app.use('/user', userWalkingRoutes);
+app.use('/user', userChatRoutes);
 app.use('/user', imageUpload);
 app.use('/', appRoutes);
 
@@ -66,6 +98,8 @@ app.use('/', appRoutes);
 app.use(function (req, res, next) {
     return res.render('index');
 });
+
+
 
 
 module.exports = app;

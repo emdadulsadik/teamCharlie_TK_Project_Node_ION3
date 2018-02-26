@@ -1,17 +1,48 @@
-
 <ion-header>
 
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>activityRecords</ion-title>
   </ion-navbar>
 
 </ion-header>
+<ion-toolbar>
+  <ion-segment [(ngModel)]="activity">
+    <ion-segment-button value="walking" color="black1">
+      <ion-icon name="walk" class="larger"></ion-icon> Walking
+    </ion-segment-button>
 
+    <ion-segment-button value="cycling" color="black1">
+      <ion-icon name="bicycle" class="larger"></ion-icon> Cycling
+    </ion-segment-button>
+
+
+    <ion-segment-button value="driving" color="black1">
+      <ion-icon name="car" class="larger"></ion-icon> Driving
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
 
 <ion-content padding>
+  <ion-content padding [ngSwitch]="activity">
+
+    <ion-content *ngSwitchCase="'walking'">
+      Walking
+    </ion-content>
+
+    <ion-content *ngSwitchCase="'cycling'">
+      Cycling
+    </ion-content>
+
+    <ion-content *ngSwitchCase="'driving'">
+      Driving
+    </ion-content>
+
+
+
+  </ion-content>
+
 
 </ion-content>
-

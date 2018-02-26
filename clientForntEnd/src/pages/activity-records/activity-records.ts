@@ -12,7 +12,7 @@ import {
   templateUrl: 'activity-records.html',
 })
 export class ActivityRecordsPage {
-
+  activity: string;
  
     constructor(public navCtrl: NavController,
       public navParams: NavParams) {}

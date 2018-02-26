@@ -7,23 +7,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
+<ion-content padding="true">
+<!-- 
+    <button (click)="showDatePicker()" ion-button full block color="primary" large>
+        <ion-icon name="calendar" class="larger" ></ion-icon>  </button> -->
 
-    <ion-item>
-      <ion-label floating  >Star Point</ion-label>
-      <ion-input type="text"  [(ngModel)]="Start" ></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label floating   >End Point</ion-label>
-      <ion-input type="text"[(ngModel)]="End" ></ion-input>
-    </ion-item>
-  
-  </ion-list>
+        <ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="today"></ion-datetime>
+</ion-content>
 
-  <button ion-button full (click)="calculateAndDisplayRoute()" >Get Direction</button>
-  <div id="right-panel"></div> <br>
-  <div id="map"></div>
-  </ion-content>
+
 

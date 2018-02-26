@@ -162,7 +162,7 @@ export class SetWalkingPage {
         console.log('See2', addressfull.length);
         var addressfullValues = addressfull.values();
         console.log('See3', addressfullValues.next().value);
-        var parsingAddress = JSON.stringify('See', addressfull)
+        var parsingAddress = JSON.stringify( addressfull)
         var bodyObject = new SetActivity(latLng, parsingAddress, this.activity);
         console.log(bodyObject);
 

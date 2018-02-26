@@ -34,7 +34,7 @@ import { SetActivitiesProvider } from '../providers/set-activities/set-activitie
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
- 
+import { DatePicker } from '@ionic-native/date-picker';
 @NgModule({
   declarations: [
     MyApp,
@@ -46,6 +46,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     FeaturesPage,
     AddPlacePage,
     PlacePage,
+    
   
   ],
   imports: [
@@ -69,6 +70,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     FeaturesPage,
     AddPlacePage,
     PlacePage,
+
     
     
   ],
@@ -78,6 +80,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     Geolocation,
     NativeGeocoder,
     File,
+    DatePicker,
     Camera,
     FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
