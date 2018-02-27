@@ -75,7 +75,7 @@ router.post('/start/:id', (req,res,next)=>{
           * @return {[type]}             [description]
           */
          addLocation.save((err,result)=>{
-             /**
+             /**{user:req.params.id,
               * [if description]
               * @param  {[type]} err [description]
               * @return {[type]}     [description]
@@ -86,7 +86,7 @@ router.post('/start/:id', (req,res,next)=>{
                      error: err
                  });
              }
-             user.setwalking.push(result);
+             user.activityModel.push(result);
              user.save();
              /**
               * [message description]
@@ -164,7 +164,7 @@ router.patch('/end/:id',(req,res,next)=>{
  * @return {[type]}                    [description]
  */
 router.get('/walkinglist/:id', (req,res,next)=>{
-    setWalkingModel.find({user:req.params.id,  activity : 'walking'})
+    activityModel.find({user:req.params.id,  activity : 'walking'})
     .populate('user')
     .exec((err, walkingdata)=>{
              /**
@@ -196,7 +196,6 @@ router.get('/walkinglist/:id', (req,res,next)=>{
 
             
         });
-
           /**
          * [message description]
          * @type {String}
