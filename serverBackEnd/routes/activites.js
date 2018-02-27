@@ -86,7 +86,7 @@ router.post('/start/:id', (req,res,next)=>{
                      error: err
                  });
              }
-             user.activityModel.push(result);
+             user.activity.push(result);
              user.save();
              /**
               * [message description]
