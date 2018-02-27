@@ -18,6 +18,7 @@ var User = require('../models/usersModel');
 var locationSchema = new Schema({
     lat:{type: Number, required: true},
     lng:{type: Number,required: true },
+    formatedAdres:{type: String },
     user : {type: Schema.Types.ObjectId,ref:'User'},
     created: {type: Date,  default: Date.now }
 });

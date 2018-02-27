@@ -15,6 +15,7 @@ import { UsertabsPage } from '../pages/usertabs/usertabs';
 
 import { AddPlacePage } from '../pages/add-place/add-place';
 import { PlacePage } from '../pages/place/place';
+import { ActivityRecordsProvider } from '../providers/activity-records/activity-records';
 
 
 import { HttpModule } from '@angular/http';
@@ -46,7 +47,6 @@ import { DatePicker } from '@ionic-native/date-picker';
     FeaturesPage,
     AddPlacePage,
     PlacePage,
-    
   
   ],
   imports: [
@@ -88,6 +88,7 @@ import { DatePicker } from '@ionic-native/date-picker';
     LocationProvider,
     FacebookProvider,
     Facebook,
+    ActivityRecordsProvider,
     PlaceServiceProvider,
     ImageUploadProvider,
     SetActivitiesProvider

@@ -16,7 +16,7 @@ var mongooseUniqueValidator = require('mongoose-unique-validator');
 
 var  Location = require('../models/locationModel'); 
 var  Images = require('../models/imageUploadModel'); 
-var SetWalking = require('../models/setWalkingModel');
+var Activity = require('../models/activityModel');
 /**
  * [userSchema description]
  * @type {Schema}
@@ -49,7 +49,7 @@ var userSchema = new Schema({
 	},
 	location : [{type: Schema.Types.ObjectId, ref:'Location' }],
 	images : [{type: Schema.Types.ObjectId, ref:'Images' }],
-	setwalking : [{type: Schema.Types.ObjectId, ref:'SetWalking' }],
+	activity : [{type: Schema.Types.ObjectId, ref:'Activity' }],
 	created: {type: Date,  default: Date.now }
 });
 

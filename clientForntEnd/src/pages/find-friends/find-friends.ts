@@ -166,7 +166,7 @@ for(var i = 0; i<this.locations.length; ++i) {
     position: new google.maps.LatLng(this.locations[i].lat, this.locations[i].lng),
   });
 
-  var geocoder = new google.maps.Geocoder;
+  var geocoder = new google.maps.Geocoder();
   var conCatLatLng = {lat: parseFloat(''+this.locations[i].lat), lng:parseFloat(''+this.locations[i].lng+'')};
   console.log(conCatLatLng); 
     

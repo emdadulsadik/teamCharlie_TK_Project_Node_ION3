@@ -5,7 +5,6 @@ import {  Observable } from 'rxjs/Rx';
 import {  SetActivity } from "../../models/setActivites";
 import {  Location } from "../../models/location";
 import {  Headers } from '@angular/http';
-
 /*
   [ Activity Records Viewer ]
   @author - Emdadul Sadik
@@ -15,6 +14,7 @@ import {  Headers } from '@angular/http';
 @Injectable()
 export class ActivityRecordsProvider {
 
+  private locations: Location[] = [];
   private setactivites: SetActivity[] = [];
 
   // liveUrl = 'https://polar-mountain-79390.herokuapp.com/';
@@ -58,5 +58,39 @@ export class ActivityRecordsProvider {
         return transformedLocation;
       })
   }
+
+
+  /**
+   * [Get Timeline activity by passing the ID and Date]
+   * @author-Khondakar Readul Islam
+   * @version 1.0.0 
+   * 
+   */
+  getActivityForTimeline(id) {
+    
+    return this.http.get(this.devUrl + 'user/activityList/' + id)
+      .map((response: Response) => {
+        const locations = response.json().obj
+        let transformedLocation: Location[] = [];
+        for (let location of locations) {
+          transformedLocation.push(new Location(location.lat,
+            location.lng,
+            location.formatedAdres,
+            location.user.userName,
+            location.user.userRole,
+            location.user.firstName,
+            location.user.lastName,
+            location.user.emailAddress,
+            location.user.imageURL,
+            location.created
+          ));
+        }
+        this.locations = transformedLocation;
+        return transformedLocation;
+      })
+    // .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+
 
 }

@@ -25,7 +25,7 @@ var User = require('../models/usersModel');
 //     created: {type: Date,  default: Date.now }
 // });
 
-var setWalkingSchema = new Schema({
+var activitySchema = new Schema({
     location : { type:Object}, 
     setWalkingUserID: {type: String, required: false },
     activity:{type: String, required: false },
@@ -37,4 +37,4 @@ var setWalkingSchema = new Schema({
 
 
 
-module.exports = mongoose.model('Setwalking', setWalkingSchema);
+module.exports = mongoose.model('Activity', activitySchema);

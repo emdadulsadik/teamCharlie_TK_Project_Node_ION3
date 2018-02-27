@@ -22,37 +22,8 @@ const jwt = require('jsonwebtoken');
  * [locationModel description]
  * @type {[type]}
  */
-const setWalkingModel = require('../models/setWalkingModel');
+const activityModel = require('../models/activityModel');
 const UserSignInModel = require('../models/usersModel'); 
-
-
-router.get('/allwalkingdata/:id', (req,res,next)=>{
-    setWalkingModel.find({user:req.params.id})
-    .populate('user')
-    .exec((err, walkingdata)=>{
-             /**
-         * [if description]
-         * @param  {[type]} err [description]
-         * @return {[type]}     [description]
-         */
-        if(err){
-            return res.status(500).json({
-                title: 'Error',
-                error: err
-            });
-        }
-          /**
-         * [message description]
-         * @type {String}
-         */
-        res.status(201).json({
-            message:'Your name is registerd',
-            obj: walkingdata 
-        });
-
-    })
-});
-
 
 
 
@@ -80,7 +51,7 @@ router.post('/start/:id', (req,res,next)=>{
              });
          }
 
-         var addLocation = new setWalkingModel({
+         var addLocation = new activityModel({
              location : {
                  start: {
                     lat: req.body.location.lat,
@@ -136,67 +107,6 @@ router.post('/start/:id', (req,res,next)=>{
  });
 
 
-
-
-//  router.post('/end/:id', (req,res,next)=>{
-    
-
-//     setWalkingModel.findById(req.params.id, (err, setWalk )=>{
-
-
-//           /**
-//           * [if description]
-//           * @param  {[type]} err [description]
-//           * @return {[type]}     [description]
-//           */
-//          if(err){
-//              return res.status(500).json({
-//                  title: 'Error',
-//                  error: err
-//              });5a92b9feff65be147b9728b7
-//          }         
-         
-//          var __data = {
-
-//              location : {
-//                 start : setWalk.location.start,
-//                  end : {
-//                     lat: req.body.location.lat,
-//                     lng: req.body.location.lng
-//                  }                    
-//              },          
-             
-//              end : Date()
-//          };
-
-
-
-//          var __condition = { 
-//             _id : req.params.id
-//          };
-
-//          var __option = { multi : false };
-
-//          setWalk.location.end = {
-//             lat: req.body.location.lat,
-//             lng: req.body.location.lng
-//          }
-
-//         setWalk.end = Date();
-         
-
-//         setWalk.save();
- 
-
-//         return res.status(200).json( setWalk );
-
-         
-//     });
-         
-             
-// });
-
-
 /**
  * [description]
  * @author-Khondakar Readul Islam
@@ -206,7 +116,7 @@ router.post('/start/:id', (req,res,next)=>{
  * @return {[type]}                    [description]
  */
 router.patch('/end/:id',(req,res,next)=>{
-	setWalkingModel.findById(req.params.id,(err,walkingdata)=>{
+	activityModel.findById(req.params.id,(err,walkingdata)=>{
 		if(err){
 			return res.status(500).json({
 				title: 'Error',
@@ -245,41 +155,14 @@ router.patch('/end/:id',(req,res,next)=>{
 
 
 
-// router.get('/walkinglist/:id', (req,res,next)=>{
-
-//     setWalkingModel.find( { user: req.params.id , activity : 'walking' } , (err, getWalkList )=>{
-
-//         var __result = [] ;
-
-//         getWalkList.forEach( element => { 
-
-            
-
-//             element['distance'] = getDistanceFromLatLonInKm(
-//                 element.location.start.lat,
-//                 element.location.start.lng,
-//                 element.location.end.lat,
-//                 element.location.end.lng
-
-//             ); 
-
-
-//             __result.push( element );
-
-            
-//         });
-
-
-//         return res.status(200).json( __result );
-
-
-//     });
- 
-    
-// });
-
-
-
+/**
+ * [description]
+ * @author-Emdadul Sadik
+ * @version 1.0.0 
+ * @param  {[type]}   'passUpdate/:id' [description]
+ * @param  {Function} (req,res,next)   [description]
+ * @return {[type]}                    [description]
+ */
 router.get('/walkinglist/:id', (req,res,next)=>{
     setWalkingModel.find({user:req.params.id,  activity : 'walking'})
     .populate('user')
@@ -343,6 +226,8 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 function deg2rad(deg) {
     return deg * (Math.PI/180)
 }
- 
+
+
+
  
  module.exports = router;

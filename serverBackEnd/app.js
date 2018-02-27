@@ -23,38 +23,8 @@ const userWalkingRoutes = require('./routes/activites');
 const userChatRoutes = require('./routes/chat');
 
 const imageUpload = require('./routes/imageUpload');
-
-var ChatMessage = require('./models/chatMessageModel');
-
 const app = express();
 
-var io           = socket_io();
-app.io           = io;
-
-
-io.on('connection', (socket) => {
-
-    socket.on('join:room', function(chatId) {
-        console.log('join room: ', chatId);
-        socket.join(chatId);
-    });
-
-    socket.on('disconnect', function() {
-        console.log('user left');
-    });
-
-    socket.on('send:chatmessage', function(data) {
-        var newMessage = new ChatMessage();
-        newMessage.chat = data.chatId;
-        newMessage.message = data.message;
-        newMessage.from = data.from;
-
-        newMessage.save((err, msg) => {
-            io.to(msg.chat).emit('chatmessage', msg);
-        });
-    });
-
-});
 // mongoose.connect('mongodb://heroku_vnc0nx9j:j09dr65ttb5t52ul7odda2fofo@ds147118.mlab.com:47118/heroku_vnc0nx9j');
  mongoose.connect('localhost:27017/social-life-tracker');
 
@@ -69,7 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({origin: true, credentials: true}));
+app.use(cors());
 
 
 /**

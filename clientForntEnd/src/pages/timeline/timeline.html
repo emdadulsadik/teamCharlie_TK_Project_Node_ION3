@@ -8,12 +8,18 @@
 </ion-header>
 
 <ion-content padding="true">
-<!-- 
-    <button (click)="showDatePicker()" ion-button full block color="primary" large>
-        <ion-icon name="calendar" class="larger" ></ion-icon>  </button> -->
-
-        <ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="today"></ion-datetime>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Select Date</ion-label>
+      <ion-input placeholder="Text Input" [(ngModel)]="dateTime" [value]="dataInicial | date:'dd/MM/yyyy'" (click)="open()"></ion-input>
+    </ion-item>
+    <button ion-button color="primary" block (click)="searchTheActivity()">
+      <ion-icon name='search'></ion-icon> Search
+    </button>
+    <ion-item no-lines hidden="true">
+      <ion-datetime #datePicker displayFormat="DD-MM-YYYY HH:mm" (ionCancel)="this.dataInicial  = null" [(ngModel)]="dataInicial"
+        doneText="Select" cancelText="Cancel" [max]="maxDate">
+      </ion-datetime>
+    </ion-item>
+  </ion-list>
 </ion-content>
-
-
-

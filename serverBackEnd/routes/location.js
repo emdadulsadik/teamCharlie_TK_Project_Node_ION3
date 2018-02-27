@@ -52,6 +52,47 @@ router.get('/allLocation', (req,res,next)=>{
     })
 });
 
+
+
+/**
+ * [description]
+ * @author-Khondakar Readul Islam created:"2018-02-26T23:06:43.208Z"
+ * @version 1.0.0 
+ * @param  {[type]}   'passUpdate/:id' [description]
+ * @param  {Function} (req,res,next)   [description]
+ * @return {[type]}                    [description]
+ */
+router.get('/activityList/:id/created', (req,res,next)=>{
+    locationModel.find({user:req.params.id, created:"2018-02-26T23:06:43.208Z"})
+    .populate('user')
+    .exec((err, locations)=>{
+             /**
+         * [if description]
+         * @param  {[type]} err [description]
+         * @return {[type]}     [description]
+         */
+        if(err){
+            return res.status(500).json({
+                title: 'Error',
+                error: err
+            });
+        }
+
+        /**
+         * [message description]
+         * @type {String}
+         */
+        res.status(201).json({
+            message:'Your name is registerd',
+            obj: locations
+        });
+
+    })
+});
+ 
+
+
+
 // router.use('/:id', (req,res,next)=>{
 //         jwt.verify(req.params.id, new Buffer('Allah', 'base64'),(err,decoded)=>{
 //                 if(err){
@@ -90,6 +131,7 @@ router.post('/:id', (req,res,next)=>{
         var addLocation = new locationModel({
             lat: req.body.lat,
             lng: req.body.lng,
+            formatedAdres: req.body.formatedAdres,
             user: req.params.id
         });
         /**
