@@ -20,15 +20,22 @@ declare var google;
 export class FindFriendsPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  hide:boolean = false; 
+  hide:boolean = false;
+
 
   // location: Location[];
   locations: Location[];
+   count:number;
+    addressFull=[];
+
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
      public storage: Storage,
      public geolocation: Geolocation, 
     public locationService: LocationProvider,
+
+
     public http: Http 
      
    ) {
@@ -156,15 +163,45 @@ onLocateMe(){
 * @author-Khondakar Readul Islam
 * @memberOf UserManagementPage
 */
+
+
+
+getArrayIteam(address){
+    console.log(this.count);
+    this.addressFull.push(address);
+    this.count--;
+    if(this.count<2){
+        console.log(this.addressFull);
+        for(var i=0;i<this.locations.length; i++){
+            var content = `<h4>${this.locations[i].userName}</h4>
+                            <p>${ this.addressFull[i] }  </p>
+                            <p>Active Time: ${this.locations[i].created}</p>
+                            `;
+
+            let marker = new google.maps.Marker({
+              map: this.map,
+              animation: google.maps.Animation.DROP,
+              position: new google.maps.LatLng(this.locations[i].lat, this.locations[i].lng),
+            });
+            this.addInfoWindow(marker, content);
+        }
+    }
+
+
+
+}
+
 onLocateFriends(){
-var addressFull = [];
+// var addressFull = [];
+    this.count=this.locations.length;
+
 for(var i = 0; i<this.locations.length; ++i) {
 
-  let marker = new google.maps.Marker({
-    map: this.map, 
-    animation: google.maps.Animation.DROP,
-    position: new google.maps.LatLng(this.locations[i].lat, this.locations[i].lng),
-  });
+  // let marker = new google.maps.Marker({
+  //   map: this.map,
+  //   animation: google.maps.Animation.DROP,
+  //   position: new google.maps.LatLng(this.locations[i].lat, this.locations[i].lng),
+  // });
 
   var geocoder = new google.maps.Geocoder;
   var conCatLatLng = {lat: parseFloat(''+this.locations[i].lat), lng:parseFloat(''+this.locations[i].lng+'')};
@@ -180,17 +217,18 @@ for(var i = 0; i<this.locations.length; ++i) {
             var address = (results[0].formatted_address);
             //  console.log(address);
            // `<p>Address : ${address}</p>`
-           addressFull.push(address);
-
-
+           // this.addressFull.push(address);
+            this.getArrayIteam(address);
         }
-    }); 
 
-  var content = `<h4>${this.locations[i].userName}</h4>
-                  <p>${ addressFull[i] }  </p>
-                  <p>Active Time: ${this.locations[i].created}</p>
-                  `; 
-  this.addInfoWindow(marker, content);
+    }.bind(this));
+
+
+  // var content = `<h4>${this.locations[i].userName}</h4>
+  //                 <p>${ addressFull[i] }  </p>
+  //                 <p>Active Time: ${this.locations[i].created}</p>
+  //                 `;
+  // this.addInfoWindow(marker, content);
   
 }
   this.hide = !this.hide; 
@@ -210,6 +248,10 @@ viewProfile(location: Location, index:number){
 * @author-Khondakar Readul Islam
 * @memberOf UserManagementPage
 */
+
+
+
+
 addInfoWindow(marker, content){
  
   let infoWindow = new google.maps.InfoWindow({
