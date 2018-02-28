@@ -13,36 +13,43 @@
     <ion-segment-button value="walking" color="black1">
       <ion-icon name="walk" class="larger"></ion-icon> Walking
     </ion-segment-button>
-
     <ion-segment-button value="cycling" color="black1">
       <ion-icon name="bicycle" class="larger"></ion-icon> Cycling
     </ion-segment-button>
-
-
     <ion-segment-button value="driving" color="black1">
       <ion-icon name="car" class="larger"></ion-icon> Driving
     </ion-segment-button>
   </ion-segment>
 </ion-toolbar>
 
+
+<!--
 <ion-content padding>
   <ion-content padding [ngSwitch]="activity">
-
     <ion-content *ngSwitchCase="'walking'">
       Walking
     </ion-content>
-
     <ion-content *ngSwitchCase="'cycling'">
       Cycling
     </ion-content>
-
     <ion-content *ngSwitchCase="'driving'">
       Driving
     </ion-content>
-
-
-
   </ion-content>
+</ion-content> 
+-->
 
+
+<ion-content padding>
+
+    <ion-grid>
+        <ion-row *ngFor="let activity of activitydata">
+
+            <ion-col> {{activity.timedelta}} </ion-col>
+            <ion-col> {{activity.activity}} </ion-col>
+            <ion-col> {{activity.distance}} </ion-col>
+          
+        </ion-row>
+    </ion-grid>
 
 </ion-content>

@@ -20,8 +20,6 @@ export class ActivityRecordsProvider {
   // liveUrl = 'https://polar-mountain-79390.herokuapp.com/';
   devUrl = 'http://localhost:5000/';
 
-  private setActivity: SetActivity[] = [];
-
   constructor(public http: Http) {
     console.log('Hello Activity Records Provider');
   }
@@ -31,13 +29,11 @@ export class ActivityRecordsProvider {
    * @version 1.0.0 
    * @param {Location} location [description]
    */
-  getActivityRecords( activityBody : SetActivity, id) {
-    
-    const body = JSON.stringify(activityBody);
+  getActivityRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.devUrl + 'user/activities/' + id, body, {
+    return this.http.get(this.devUrl + 'user/activities/' + id, {
         headers: headers
-    }).map((response: Response) => response.json())
+    }).map((response: Response) => {  return response.json().obj ; })
   }
 
 
@@ -53,7 +49,7 @@ export class ActivityRecordsProvider {
         const activities = response.json().obj
         let transformedLocation: SetActivity[] = [];
         for (let activity of activities) {
-          transformedLocation.push(new SetActivity(activity.location));
+          transformedLocation.push( new SetActivity(activity.location) );
         }
         return transformedLocation;
       })
