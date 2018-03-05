@@ -6,50 +6,141 @@
     </button>
     <ion-title>activityRecords</ion-title>
   </ion-navbar>
-
 </ion-header>
 <ion-toolbar>
-  <ion-segment [(ngModel)]="activity">
-    <ion-segment-button value="walking" color="black1">
-      <ion-icon name="walk" class="larger"></ion-icon> Walking
-    </ion-segment-button>
-    <ion-segment-button value="cycling" color="black1">
-      <ion-icon name="bicycle" class="larger"></ion-icon> Cycling
-    </ion-segment-button>
-    <ion-segment-button value="driving" color="black1">
-      <ion-icon name="car" class="larger"></ion-icon> Driving
-    </ion-segment-button>
-  </ion-segment>
+<ion-segment [(ngModel)]="activity">
+  <ion-segment-button value="walking" color="black1" (click)="getWalkingRecordsData()">
+    <ion-icon name="walk" class="larger"></ion-icon> Walking
+  </ion-segment-button>
+
+  <ion-segment-button value="cycling" color="black1" (click)="getCyclingRecordsData()">
+    <ion-icon name="bicycle" class="larger"></ion-icon> Cycling
+  </ion-segment-button>
+
+
+  <ion-segment-button value="driving" color="black1" (click)="getDrivingRecordsData()">
+    <ion-icon name="car" class="larger"></ion-icon> Driving
+  </ion-segment-button>
+</ion-segment>
 </ion-toolbar>
 
-
-<!--
 <ion-content padding>
   <ion-content padding [ngSwitch]="activity">
+
     <ion-content *ngSwitchCase="'walking'">
-      Walking
-    </ion-content>
-    <ion-content *ngSwitchCase="'cycling'">
-      Cycling
-    </ion-content>
-    <ion-content *ngSwitchCase="'driving'">
-      Driving
-    </ion-content>
-  </ion-content>
-</ion-content> 
--->
-
-
-<ion-content padding>
-
-    <ion-grid>
-        <ion-row *ngFor="let activity of activitydata">
-
-            <ion-col> {{activity.timedelta}} </ion-col>
-            <ion-col> {{activity.activity}} </ion-col>
-            <ion-col> {{activity.distance}} </ion-col>
-          
+      <ion-grid *ngFor="let walkingDatas of walkingData">
+        <ion-row></ion-row>
+        <ion-row class="header">
+          <ion-col col-12>
+            <button class="icons">
+              <ion-icon name="people"></ion-icon>
+            </button>
+          </ion-col>
         </ion-row>
-    </ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <h4 class="name"> <ion-icon name="walk" class="larger"></ion-icon> {{walkingDatas.activity}}</h4>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-4>
+            <ion-icon name="pin"></ion-icon> Address
+          </ion-col>
+          <ion-col col-18>
+            <ion-icon name="link"></ion-icon> To Veiw Map
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-4>
+            <strong>Distance</strong> {{walkingDatas.distance}}
+          </ion-col>
+          <ion-col col-8>
+            <strong>Time</strong> {{walkingDatas.timedelta}}
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-content>
+
+    <ion-content *ngSwitchCase="'cycling'">
+        <ion-grid *ngFor="let cyclingDatas of cyclingData">
+            <ion-row></ion-row>
+            <ion-row class="header">
+              <ion-col col-12>
+                <button class="icons">
+                  <ion-icon name="people"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12>
+                <h4 class="name"> <ion-icon name="bicycle" class="larger"></ion-icon>  {{cyclingDatas.activity}}</h4>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row>
+              <ion-col col-4>
+                <ion-icon name="pin"></ion-icon> Address
+              </ion-col>
+              <ion-col col-18>
+                <ion-icon name="link"></ion-icon> To Veiw Map
+              </ion-col>
+            </ion-row>
+    
+            <ion-row>
+              <ion-col col-4>
+                <strong>Distance</strong> {{cyclingDatas.distance}}
+              </ion-col>
+              <ion-col col-8>
+                <strong>Time</strong> {{cyclingDatas.timedelta}}
+              </ion-col>
+            </ion-row>
+    
+          </ion-grid>
+    </ion-content>
+
+    <ion-content *ngSwitchCase="'driving'">
+      <ion-grid *ngFor="let drivingDatas of drivingData">
+        <ion-row></ion-row>
+        <ion-row class="header">
+          <ion-col col-12>
+            <button class="icons">
+              <ion-icon name="people"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <h4 class="name"> <ion-icon name="bicycle" class="larger"></ion-icon>  {{drivingDatas.activity}}</h4>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-4>
+            <ion-icon name="pin"></ion-icon> Address
+          </ion-col>
+          <ion-col col-18>
+            <ion-icon name="link"></ion-icon> To Veiw Map
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-4>
+            <strong>Distance</strong> {{drivingDatas.distance}}
+          </ion-col>
+          <ion-col col-8>
+            <strong>Time</strong> {{drivingDatas.timedelta}}
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-content>
+
+
+
+  </ion-content>
+
 
 </ion-content>

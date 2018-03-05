@@ -7,19 +7,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding="true">
-  <ion-list>
-    <ion-item>
-      <ion-label color="primary">Select Date</ion-label>
-      <ion-input placeholder="Text Input" [(ngModel)]="dateTime" [value]="dataInicial | date:'dd/MM/yyyy'" (click)="open()"></ion-input>
-    </ion-item>
-    <button ion-button color="primary" block (click)="searchTheActivity()">
-      <ion-icon name='search'></ion-icon> Search
-    </button>
-    <ion-item no-lines hidden="true">
-      <ion-datetime #datePicker displayFormat="DD-MM-YYYY HH:mm" (ionCancel)="this.dataInicial  = null" [(ngModel)]="dataInicial"
-        doneText="Select" cancelText="Cancel" [max]="maxDate">
-      </ion-datetime>
-    </ion-item>
-  </ion-list>
+
+<ion-content padding="true" >
+
+    <section id="cd-timeline" >
+        <div *ngFor="let location of locations" class="cd-timeline-block">
+            <div class="cd-timeline-img">
+              <ion-icon name="calendar"></ion-icon>
+            </div> <!-- cd-timeline-img -->
+     
+            <div class="cd-timeline-content">
+                <h2> Location : {{location.lat}} </h2>
+                <p *ngIf="isActivity">Activity {{location.distance}}</p>
+                <a href="#0" class="cd-read-more">Read more</a>
+                <span class="cd-date">{{location.created | date:'short'}}</span>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+
+    </section>
+
+
+
 </ion-content>
+

@@ -6,6 +6,10 @@ import { MyApp } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
+import { TimelineComponent } from '../components/timeline/timeline';
+import { TimelineTimeComponent } from '../components/timeline/timeline';
+import { TimelineItemComponent } from '../components/timeline/timeline';
+
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { AgmCoreModule } from '@agm/core';
@@ -36,6 +40,7 @@ import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DatePicker } from '@ionic-native/date-picker';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -47,6 +52,9 @@ import { DatePicker } from '@ionic-native/date-picker';
     FeaturesPage,
     AddPlacePage,
     PlacePage,
+    TimelineComponent,
+    TimelineTimeComponent,
+    TimelineItemComponent
   
   ],
   imports: [

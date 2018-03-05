@@ -9,7 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { ActivityRecordsProvider } from '../../providers/activity-records/activity-records';
 
 
-declare var google;
+// declare var google;
 
 
 @IonicPage()
@@ -18,9 +18,10 @@ declare var google;
   templateUrl: 'activity-records.html',
 })
 export class ActivityRecordsPage {
-
-  activitydata:SetActivity [] = [];
- 
+  activity:string;
+  walkingData:SetActivity [] = [];
+  cyclingData:SetActivity [] = [];
+  drivingData:SetActivity [] = [];
     constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
@@ -32,7 +33,7 @@ export class ActivityRecordsPage {
 
     ionViewDidLoad() { 
       console.log('ionViewDidLoad ActivityRecordsPage');
-      this.getActivityRecordsData();
+      // this.getActivityRecordsData();
     }
 
    /**
@@ -62,10 +63,14 @@ export class ActivityRecordsPage {
     })
   }
 
-
-  getActivityRecordsData(){
+  /**
+  * @description- Change the Footbar to default if token is null
+  * @author-Emdadul Sadik
+  * @memberOf ActivityRecords
+  */
+ getWalkingRecordsData(){
     this.storage.get('userId').then((userId) => {
-      this.ActivityRecordsProvider.getActivityRecords(userId).subscribe(
+      this.ActivityRecordsProvider.getWalkingRecords(userId).subscribe(
         data => { 
           for( let item of data){
 
@@ -79,7 +84,7 @@ export class ActivityRecordsPage {
 
             item.timedelta = this.TimeforHumans( item.timedelta / 1000 );
 
-            this.activitydata.push(item);
+            this.walkingData.push(item);
 
           }; 
         },
@@ -89,7 +94,61 @@ export class ActivityRecordsPage {
 
   }
 
+  getCyclingRecordsData(){
+    this.storage.get('userId').then((userId) => {
+      this.ActivityRecordsProvider.getCyclingRecords(userId).subscribe(
+        data => { 
+          for( let item of data){
 
+            item.distance = this.getDistanceFromLatLonInKm(
+              item.location.start.lat,
+              item.location.start.lng,
+              item.location.end.lat,
+              item.location.end.lng );
+
+            item.timedelta = new Date(item.end).valueOf() - new Date(item.start).valueOf();
+
+            item.timedelta = this.TimeforHumans( item.timedelta / 1000 );
+
+            this.cyclingData.push(item);
+
+          }; 
+        },
+        error=> console.log('ActivityRecords Fetching Error', error)
+      );
+    }).catch( err => console.log(err) );
+  }
+
+  getDrivingRecordsData(){
+    this.storage.get('userId').then((userId) => {
+      this.ActivityRecordsProvider.getDrivingRecords(userId).subscribe(
+        data => { 
+          for( let item of data){
+
+            item.distance = this.getDistanceFromLatLonInKm(
+              item.location.start.lat,
+              item.location.start.lng,
+              item.location.end.lat,
+              item.location.end.lng );
+
+            item.timedelta = new Date(item.end).valueOf() - new Date(item.start).valueOf();
+
+            item.timedelta = this.TimeforHumans( item.timedelta / 1000 );
+
+            this.drivingData.push(item);
+
+          }; 
+        },
+        error=> console.log('ActivityRecords Fetching Error', error)
+      );
+    }).catch( err => console.log(err) );
+  }
+
+  /**
+  * @description- Change the Footbar to default if token is null
+  * @author-Emdadul Sadik
+  * @memberOf ActivityRecords
+  */
   getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
       var R = 6371; // Radius of the earth in km
       var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
@@ -103,13 +162,21 @@ export class ActivityRecordsPage {
       var d = R * c; // Distance in km
       return d;
   }
-
+  /**
+  * @description- Change the Footbar to default if token is null
+  * @author-Emdadul Sadik
+  * @memberOf ActivityRecords
+  */
   deg2rad(deg) {
       return deg * (Math.PI/180)
   }
 
 
-
+  /**
+  * @description- Change the Footbar to default if token is null
+  * @author-Emdadul Sadik
+  * @memberOf ActivityRecords
+  */
   TimeforHumans ( seconds ) {
       var levels = [
           [Math.floor(seconds / 31536000), 'years'],

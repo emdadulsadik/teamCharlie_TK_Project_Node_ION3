@@ -34,15 +34,14 @@ export class LocationProvider {
    * @version 1.0.0 
    * @param {Location} location [description]
    */
-  addLocation(location: Location, val) {
+  addLocation(location: Location, val, address) {
     const body = JSON.stringify(location);
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.post(this.devUrl + 'user/' + val, body, {
+    return this.http.post(this.devUrl + 'user/' + val+ '/'+ address, body, {
         headers: headers
-      })
-      .map((response: Response) => response.json())
+      }).map((response: Response) => response.json())
     // .catch((error: Response) => Observable.throw(error.json()));
   }
 
@@ -60,6 +59,7 @@ export class LocationProvider {
         for (let location of locations) {
           transformedLocation.push(new Location(location.lat,
             location.lng,
+            location.formatedAdres,
             location.user.userName,
             location.user.userRole,
             location.user.firstName,
@@ -76,3 +76,4 @@ export class LocationProvider {
   }
 
 }
+

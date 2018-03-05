@@ -27,7 +27,8 @@ var User = require('../models/usersModel');
 
 var activitySchema = new Schema({
     location : { type:Object}, 
-    setWalkingUserID: {type: String, required: false },
+    startpoint: {type:String},
+    endpoint: {type:String},
     activity:{type: String, required: false },
     user : {type: Schema.Types.ObjectId,ref:'User'},    
     start : { type:Date, required:false },

@@ -51,7 +51,6 @@ export class SetDrivingPage {
 
     ionViewDidLoad() {
       console.log('ionViewDidLoad SetWorkingPage');
-      this.getWalkingData();
 
     }
 
@@ -97,144 +96,123 @@ export class SetDrivingPage {
 
 
 
+
+/**
+   * @description- Change the Footbar to default if token is null
+   * @author-MD Wazid Ali
+   * @memberOf UserManagementPage
+   */
+
+  startCycling(){
+    this.geolocation.getCurrentPosition().then(
+      location => {
+        let latLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+        let mapOptions = {
+          center: latLng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+        var geocoder = new google.maps.Geocoder(); 
+        geocoder.geocode({'latLng':latLng},function(results,status){
+          if (status !== google.maps.GeocoderStatus.OK){
+            console.log(status);
+          }
+          if(status == google.maps.GeocoderStatus.OK){
+            var startpoint = (results[0].formatted_address); 
+          }
+          var bodyObject = new SetActivity(latLng);
+          console.log(latLng.lat);
+          this.storage.get('userId').then((userId)=>{
+            this.stActivityProvider.addStartActivitiesInfo(bodyObject,userId,startpoint,this.activity).subscribe((data)=>{
+              console.log(data);
+                this.storage.set('setActivitiesIDForCycling', data.setActivitiesID);
+                this.storage.set('setActivities', data.activity);
+            },(error)=>{
+              console.log(error);
+            })
+          }).catch((err)=>{
+            console.log(err);
+          })
+          let marker = new google.maps.Marker({
+            map:this.map,
+            animation: google.maps.Animation.DROP,
+            position: this.map.getCenter()
+          });
+          let content = `<h5>${startpoint}</h5>`;
+          this.addInfoWindow(marker,content); 
+        }.bind(this))
+      }
+    )
+  }
+
+
+
+/**
+   * @description- Change the Footbar to default if token is null
+   * @author-MD Wazid Ali
+   * @memberOf UserManagementPage
+   */
+
+  endCycling(){
+    this.geolocation.getCurrentPosition().then(
+      location => {
+        let latLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+        let mapOptions = {
+          center: latLng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+        var geocoder = new google.maps.Geocoder(); 
+        geocoder.geocode({'latLng':latLng},function(results,status){
+          if (status !== google.maps.GeocoderStatus.OK){
+            console.log(status);
+          }
+          if(status == google.maps.GeocoderStatus.OK){
+            var endpoint = (results[0].formatted_address); 
+          }
+          var bodyObject = new SetActivity(latLng);
+          console.log(latLng.lat);
+          this.storage.get('setActivitiesIDForCycling').then((setActivitiesIDForCycling)=>{
+            this.stActivityProvider.addEndActivitiesInfo(bodyObject,setActivitiesIDForCycling,endpoint).subscribe((data)=>{
+              console.log(data);
+            },(error)=>{
+              console.log(error);
+            })
+          }).catch((err)=>{
+            console.log(err);
+          })
+          let marker = new google.maps.Marker({
+            map:this.map,
+            animation: google.maps.Animation.DROP,
+            position: this.map.getCenter()
+          });
+          let content = `<h5>${endpoint}</h5>`;
+          this.addInfoWindow(marker,content); 
+        }.bind(this))
+      }
+    )
+  }
+
+
+
   /**
-   * @description- Set Marker on Map
-   * @author-Emdadul Sadik
-   * @memberOf SetActivity
+   * @description- Change the Footbar to default if token is null
+   * @author-Khondakar Readul Islam
+   * @memberOf UserManagementPage
    */
   addInfoWindow(marker, content) {
+
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });
+
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
     });
 
   }
 
-
-
-   /**
-   * @description - Set Start Activity on Map and also subscribe Nodejs Backend.
-   * @author- Emdadul Sadik
-   * @memberOf SetActivity
-   */
-
-  startDriving() {
-    this.geolocation.getCurrentPosition().then(      
-      (location) => {
-          let latLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-          let mapOptions = { center: latLng, zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP };
-          this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-          let marker = new google.maps.Marker({
-              map: this.map,
-              animation: google.maps.Animation.DROP,
-              position: this.map.getCenter()
-          });
-          var geocoder = new google.maps.Geocoder();
-          var addressfull = [];
-          geocoder.geocode(
-            { 'latLng': latLng }, 
-            function (results, status) {
-              if ( status !== google.maps.GeocoderStatus.OK) {
-                alert(status);
-              }            
-              var address = (results[0].formatted_address);
-              addressfull.push(address);
-          });
-          
-          var addressfullValues = addressfull.values();
-          console.log('See3', addressfullValues.next().value);
-          var parsingAddress = JSON.stringify('See', addressfull)
-          var bodyObject = new SetActivity(latLng, parsingAddress, this.activity);
-          console.log(bodyObject);
-
-          this.storage.get('userId').then((userId) => {
-
-            this.stActivityProvider.startWalkingInfo(bodyObject, userId)
-              .subscribe(
-                data => {
-                  console.log(data);
-                  this.storage.set('setWalkingUserID', data.setWalkingUserID);
-                  this.storage.set('setActivities', data.activity);                
-                },
-
-                error => console.log(error) );
-          }).catch( err => console.log(err) );
-
-          let content = `<h4>${latLng}</h4> <br> <p> </p>`;
-          this.addInfoWindow(marker, content);
-          console.log(this.map);
-        }
-
-    ).catch( (error) => {console.log('Error getting location', error); });
-
-
-  }
-
-
-   /**
-   * @description - Set End Activity on Map and also subscribe Nodejs Backend.
-   * @author- Emdadul Sadik
-   * @memberOf SetActivity
-   */
-
-  endDriving() {
-
-    this.geolocation.getCurrentPosition().then(
-      location => {
-          let latLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-          let mapOptions = { center: latLng, zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP};
-          this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-          let marker = new google.maps.Marker({
-              map: this.map,
-              animation: google.maps.Animation.DROP,
-              position: this.map.getCenter()
-          });
-          var geocoder = new google.maps.Geocoder();
-          var addressfull = [];
-          geocoder.geocode( { 'latLng': latLng }, (results, status) => {
-                if (status !== google.maps.GeocoderStatus.OK) {
-                  alert(status);
-                }          
-                var address = (results[0].formatted_address);
-                addressfull.push(address);
-            });
-
-          var addressfullValues = addressfull.values();
-          console.log('See3', addressfullValues.next().value);
-          var parsingAddress = JSON.stringify(addressfull);        
-          var bodyObject = new SetActivity(latLng,parsingAddress,this.activity);
-
-          console.log(bodyObject);
-
-          this.storage.get('setWalkingUserID').then( (setWalkingUserID) => {          
-            this.stActivityProvider.endWalkingInfo( bodyObject, setWalkingUserID)
-                .subscribe(
-                    data => console.log(data),
-                    error => console.log(error)
-                );
-          }).catch((err) => console.log(err) ) ;         
-
-          let content = `<h4>${latLng}</h4> <br><p> </p>`;
-          this.addInfoWindow(marker, content);
-          console.log(this.map);
-        }
-
-    ).catch( error => console.log('Error getting location', error) );
-
-  }
-
-  getWalkingData(){
-
-    this.storage.get('userId').then((userId) => {
-      this.stActivityProvider.getLocation(userId).subscribe(
-        data=> console.log(data),
-        error=> console.log('getDriving Error', error)
-      );
-    }).catch( err => console.log(err) );
-
-
-  }
 
 }

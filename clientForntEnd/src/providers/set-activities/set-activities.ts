@@ -36,26 +36,26 @@ export class SetActivitiesProvider {
    * @version 1.0.0 
    * @param {Location} location [description]
    */
-  startWalkingInfo(activityBody: SetActivity, id) {
+  addStartActivitiesInfo(activityBody: SetActivity, id, startpoint,activity) {
     // const mergedBody = new SetActivity(latLng, setActivity); 
     const body = JSON.stringify(activityBody);
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.post(this.devUrl + 'user/start/' + id, body, {
+    return this.http.post(this.devUrl+'user/start/'+id+'/'+startpoint+'/'+activity, body, {
         headers: headers
       })
       .map((response: Response) => response.json())
     // .catch((error: Response) => Observable.throw(error.json()));
   }
 
-  endWalkingInfo(activityBody: SetActivity, id){
+  addEndActivitiesInfo(activityBody: SetActivity, id, endpoint){
 
   const body = JSON.stringify(activityBody);
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.patch(this.devUrl + 'user/end/' + id, body, {
+    return this.http.patch(this.devUrl+'user/end/'+id+'/'+endpoint,  body, {
         headers: headers
       })
       .map((response: Response) => response.json())
@@ -67,18 +67,11 @@ export class SetActivitiesProvider {
    * @version 1.0.0 
    * 
    */
-  getLocation(id) {
-    return this.http.get(this.devUrl + 'user/walkinglist/' + id)
-      .map((response: Response) => {
-        const activities = response.json().obj
-        let transformedLocation: SetActivity[] = [];
-        for (let activity of activities) {
-          transformedLocation.push(new SetActivity(activity.location));
-        }
-        // this.locations = transformedLocation; 
-        return transformedLocation;
-      })
-    // .catch((error: Response) => Observable.throw(error.json()));
+  getWalkingRecords( id) {    
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.devUrl + 'user/singleWalkingInfo/' + id, {
+        headers: headers
+    }).map((response: Response) => {  return response.json().obj ; })
   }
 
 }
