@@ -306,5 +306,147 @@ router.get('/singleWalkingInfo/:id', (req,res,next)=>{
 
 
 
+/**
+ * [description]
+ * @author-Khondakar Readul Islam
+ * @version 1.0.0 
+ * @param  {[type]}   'passUpdate/:id' [description]
+ * @param  {Function} (req,res,next)   [description]
+ * @return {[type]}                    [description]
+ */
+router.get('/singleCyclingInfo/:id', (req,res,next)=>{
+    activityModel.find({_id:req.params.id,  activity : 'cycling'})
+    .exec((err, walkingdata)=>{
+             /**
+         * [if description]
+         * @param  {[type]} err [description]
+         * @return {[type]}     [description]
+         */
+        if(err){
+            return res.status(500).json({
+                title: 'Error',
+                error: err
+            });
+        }
+          /**
+         * [message description]
+         * @type {String}
+         */
+        res.status(201).json({
+            message:'Your name is registerd',
+            obj:walkingdata
+        });
+
+    })
+});
+
+
+
+/**
+ * [description]
+ * @author-Khondakar Readul Islam
+ * @version 1.0.0 
+ * @param  {[type]}   'passUpdate/:id' [description]
+ * @param  {Function} (req,res,next)   [description]
+ * @return {[type]}                    [description]
+ */
+router.get('/singleDrivingInfo/:id', (req,res,next)=>{
+    activityModel.find({_id:req.params.id,  activity : 'driving'})
+    .exec((err, walkingdata)=>{
+             /**
+         * [if description]
+         * @param  {[type]} err [description]
+         * @return {[type]}     [description]
+         */
+        if(err){
+            return res.status(500).json({
+                title: 'Error',
+                error: err
+            });
+        }
+          /**
+         * [message description]
+         * @type {String}
+         */
+        res.status(201).json({
+            message:'Your name is registerd',
+            obj:walkingdata
+        });
+
+    })
+});
+
+
+
+
+
+
+
+/**
+ * [description]
+ * @author-Emdadul Sadik
+ * @version 1.0.0 
+ * @param  {[type]}   'passUpdate/:id' [description]
+ * @param  {Function} (req,res,next)   [description]
+ * @return {[type]}                    [description]
+ */
+router.get('/activitiesAggregeted/:id', (req,res,next)=>{
+    var ObjectId = require("mongoose").Types.ObjectId; 
+    activityModel.aggregate( [ 
+        { $match :{ user : new ObjectId(req.params.id) } },        
+        { $sort : { start : -1  } } , 
+        { $group: { 
+                _id : "$start", 
+                start : { $first : "$start"   } , 
+                end: { $first : "$end" }, 
+                activity:{$first:"$activity"}, 
+                id:{ $first: "$_id"  },
+                location : { $first: "$location" },
+                startpoint : { $first: "$startpoint" },
+                endpoint : { $first: "$endpoint" },
+                user: {$first:"$user"}
+                
+            }
+        },
+        { $project : { 
+                _id : "$id",
+                start : { $dateToString : { format: "%Y-%m-%d,%H:%M", date:"$start"  } } , 
+                end : { $dateToString : { format: "%Y-%m-%d,%H:%M", date:"$end"  } } ,
+                activity : 1,
+                location: 1,
+                address : 1,
+                user:1,
+                startpoint : 1,
+                endpoint : 1,
+            } 
+        }
+        
+    ]
+
+    ).exec((err, walkingdata)=>{
+        
+        if(err){
+            return res.status(500).json({
+                title: 'Error',
+                error: err
+            });
+        }
+
+        res.status(201).json({            
+            obj: walkingdata 
+        });
+
+    });
+
+    //NOW POPULATE USER SEPARATELY
+    // activityModel.populate( { user:new ObjectId(req.params.id) } , {path:"user"}, (err,res) => {        
+    //     console.log(res);
+    // });
+
+
+});
+
+
+
  
  module.exports = router;

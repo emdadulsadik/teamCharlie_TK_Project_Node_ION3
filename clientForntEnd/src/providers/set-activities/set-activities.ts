@@ -74,4 +74,35 @@ export class SetActivitiesProvider {
     }).map((response: Response) => {  return response.json().obj ; })
   }
 
+
+
+    /**
+   * [getLocation description]
+   * @author-Khondakar Readul Islam
+   * @version 1.0.0 
+   * 
+   */
+  getCyclingRecords( id) {    
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.devUrl + 'user/singleCyclingInfo/' + id, {
+        headers: headers
+    }).map((response: Response) => {  return response.json().obj ; })
+  }
+
+
+    /**
+   * [getLocation description]
+   * @author-Khondakar Readul Islam
+   * @version 1.0.0 
+   * 
+   */
+  getDrivingRecords( id) {    
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.devUrl + 'user/singleDrivingInfo/' + id, {
+        headers: headers
+    }).map((response: Response) => {  return response.json().obj ; })
+  }
+
+  
+  
 }

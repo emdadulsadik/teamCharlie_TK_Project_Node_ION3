@@ -10,21 +10,32 @@
 
 <ion-content padding="true" >
 
-    <section id="cd-timeline" >
-        <div *ngFor="let location of locations" class="cd-timeline-block">
+    <section id="cd-timeline"  >
+        <div *ngFor="let activity of setActivity" class="cd-timeline-block">
+          <div>
             <div class="cd-timeline-img">
               <ion-icon name="calendar"></ion-icon>
             </div> <!-- cd-timeline-img -->
      
-            <div class="cd-timeline-content">
-                <h2> Location : {{location.lat}} </h2>
-                <p *ngIf="isActivity">Activity {{location.distance}}</p>
+            <div  class="cd-timeline-content">
+              <div *ngIf="realActivity;then location else startpoint"></div>
+                
+                <ng-template #location ><h2 > Location : {{activity.startpoint}}  </h2></ng-template>
+                <ng-template #startpoint> <h2> StartPoint : {{activity.startpoint}}  </h2></ng-template> 
+                  
+               
+                <p *ngIf="!realActivity">Activity {{activity.activity}}</p>
+                <p *ngIf="realActivity">Activity {{activity.activity}}</p>
                 <a href="#0" class="cd-read-more">Read more</a>
-                <span class="cd-date">{{location.created | date:'short'}}</span>
+                <span *ngIf="!realActivity" class="cd-date">{{activity.start}}</span>
+                <span *ngIf="realActivity" class="cd-date">{{activity.start}}</span>
             </div> <!-- cd-timeline-content -->
+            </div>
         </div> <!-- cd-timeline-block -->
 
     </section>
+
+
 
 
 

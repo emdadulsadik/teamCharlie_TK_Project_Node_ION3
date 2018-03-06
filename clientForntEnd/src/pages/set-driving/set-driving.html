@@ -25,8 +25,33 @@
         </button>
       </ion-col>
     </ion-row>
-  </ion-grid>
+    <ion-row  *ngFor="let activity of setActivity; let i=index">
+      <ion-col *ngIf="hide">
+        <ion-card>
+          <ion-item>
+            Congratulation You made below records
+            <h2>Distance: {{activity.distance}} - Km </h2>
+            <p>Total Time Taken:{{activity.timedelta}} </p>
 
+            <p>You Start From:{{activity.startpoint}} </p>
+            <p>You Finished To:{{activity.endpoint}} </p>
+          </ion-item>
+
+          <ion-row>
+            <ion-col>
+                <p>Wanna Chalange your friends, click this button </p>
+              <button ion-button color="secodary" full block (click)="shareActivity(activity,i)">
+                <ion-icon name='share'></ion-icon>  Share It
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      </ion-row>
+
+
+
+  </ion-grid>
 </ion-content>
 
 

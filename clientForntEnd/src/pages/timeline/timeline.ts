@@ -7,15 +7,14 @@ import {
   NavParams
 } from 'ionic-angular';
 import {
-  Location
-} from '../../models/location';
+  SetActivity
+} from "../../models/setActivites";
 import {
   DatePicker
 } from '@ionic-native/date-picker';
-import { User } from "../../models/user.model";
 import {
-  ActivityRecordsProvider
-} from '../../providers/activity-records/activity-records';
+  TimelineProvider
+} from '../../providers/timeline/timeline';
 import {
   Storage
 } from '@ionic/storage';
@@ -26,12 +25,12 @@ import {
 })
 export class TimelinePage {
 
-  locations:Location[];
-  users: User[] = [];
-  isActivity:boolean=false;
+  setActivity:SetActivity[]=[];
+  still:string;
+  realActivity:boolean;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public activityRecordsProvide: ActivityRecordsProvider,
+    public timelineProvider: TimelineProvider,
     public storage: Storage,
     //  private datePicker: DatePicker
   ) {
@@ -47,39 +46,38 @@ export class TimelinePage {
 
 
 
-
-  // searchTheActivity() {
-  //   this.storage.get('userId').then((userId) => {
-  //     this.activityRecordsProvide.getActivityForTimeline(userId).subscribe((data) => {
-  //       this.locations = data;
-  //       console.log(this.locations);
-  //     });
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   })
-  // }
-
-
   searchTheActivity(){
     console.log('ff');
-
     this.storage.get('userId').then((userId)=>{
-      this.activityRecordsProvide.getActivityForTimeline(userId).subscribe((data)=>{
+      this.timelineProvider.getActivityForTimeline(userId).subscribe(
+        data => { 
+          for( let item of data){
+            item.distance = this.getDistanceFromLatLonInKm(
+              item.location.start.lat,
+              item.location.start.lng,
+              item.location.end.lat,
+              item.location.end.lng );
+            item.timedelta = new Date(item.end).valueOf() - new Date(item.start).valueOf();
+            item.timedelta = this.TimeforHumans( item.timedelta / 1000 );
+            this.setActivity.push(item);
+
+            
+
+          }; 
+
+          if(data.activity==null){
+            this.realActivity = false
+          }else{
+            this.realActivity = true
+          }
+
+        },
         
-        // this.locations=data
-        console.log(data);
-        // console.log(this.locations)
-     
-         
-
-      });
-    }).catch((err)=>{
-      console.log(err);
-    })
-
-
+        error=> console.log('ActivityRecords Fetching Error', error)
+      );
+    }).catch( err => console.log(err) );
+  
   }
-
 
 
   /**

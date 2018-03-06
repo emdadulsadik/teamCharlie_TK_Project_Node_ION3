@@ -22,173 +22,36 @@ const jwt = require('jsonwebtoken');
  * [locationModel description]
  * @type {[type]}
  */
-var locationModel = require('../models/locationModel'); 
-var ActivityModel = require('../models/activityModel'); 
+const locationModel = require('../models/locationModel'); 
 const UserSignInModel = require('../models/usersModel'); 
+const ActivityModel = require('../models/activityModel'); 
 
-// router.get('/allLocation', (req,res,next)=>{
-//     locationModel.find()
-//     .populate('user')
-//     .exec((err, locations)=>{
-//              /**
-//          * [if description]
-//          * @param  {[type]} err [description]
-//          * @return {[type]}     [description]
-//          */
-//         if(err){
-//             return res.status(500).json({
-//                 title: 'Error',
-//                 error: err
-//             });
-//         }
-//           /**
-//          * [message description]
-//          * @type {String}
-//          */
-//         res.status(201).json({
-//             message:'Your name is registerd',
-//             obj: locations 
-//         });
-
-//     })
-// });
-
-
-
-// /**
-//  * [description]
-//  * @author-Khondakar Readul Islam created:"2018-02-26T23:06:43.208Z"
-//  * @version 1.0.0 
-//  * @param  {[type]}   'passUpdate/:id' [description]
-//  * @param  {Function} (req,res,next)   [description]
-//  * @return {[type]}                    [description]
-//  */
-// router.get('/activityList/:id/created', (req,res,next)=>{
-//     locationModel.find({user:req.params.id, created:"2018-02-26T23:06:43.208Z"})
-//     .populate('user')
-//     .exec((err, locations)=>{
-//              /**
-//          * [if description]
-//          * @param  {[type]} err [description]
-//          * @return {[type]}     [description]
-//          */
-//         if(err){
-//             return res.status(500).json({
-//                 title: 'Error',
-//                 error: err
-//             });
-//         }
-
-//         /**
-//          * [message description]
-//          * @type {String}
-//          */
-//         res.status(201).json({
-//             message:'Your name is registerd',
-//             obj: locations
-//         });
-
-//     })
-// });
-
-
-/**
- * [description]
- * @author-Khondakar Readul Islam created:"2018-02-26T23:06:43.208Z"
- * @version 1.0.0 
- * @param  {[type]}   'passUpdate/:id' [description]
- * @param  {Function} (req,res,next)   [description]
- * @return {[type]}                    [description]
- */
-router.get('/activityList/:id', (req,res,next)=>{
-    UserSignInModel.findById(req.params.id)
-    .populate('location')
-    .populate('activity')
+router.get('/allLocation', (req,res,next)=>{
+    locationModel.find()
+    .populate('user')
     .exec((err, locations)=>{
              /**
          * [if description]
          * @param  {[type]} err [description]
          * @return {[type]}     [description]
          */
-
-         
         if(err){
             return res.status(500).json({
                 title: 'Error',
                 error: err
             });
         }
-
-        /**
+          /**
          * [message description]
          * @type {String}
          */
         res.status(201).json({
             message:'Your name is registerd',
-            obj: locations
+            obj: locations 
         });
 
     })
 });
-
-
-
-
-
-
-/**
- * [description]
- * @author-Khondakar Readul Islam created:"2018-02-26T23:06:43.208Z"
- * @version 1.0.0 
- * @param  {[type]}   'passUpdate/:id' [description]
- * @param  {Function} (req,res,next)   [description]
- * @return {[type]}                    [description]
- */
-// router.get('/activityList/:id', (req,res,next)=>{
-//     var ObjectId = require("mongoose").Types.ObjectId;
-//     locationModel.find(
-
-//         { user : req.params.id } 
-//     )
-    
-//     .populate('activity')
-//     .populate('user')
-
-//     // .aggregate([
-//     //     { $unwind : '$location' }
-//     // ])
-    
-//     .exec((err, locations)=>{
-//              /**
-//          * [if description]
-//          * @param  {[type]} err [description]
-//          * @return {[type]}     [description]
-//          */
-
-         
-//         if(err){
-//             return res.status(500).json({
-//                 title: 'Error',
-//                 error: err
-//             });
-//         }
-
-//         /**
-//          * [message description]
-//          * @type {String}
-//          */
-//         res.status(201).json({
-//             message:'Your name is registerd',
-//             obj: locations
-//         });
-
-//     })
-// });
-
-
- 
-
-
 
 // router.use('/:id', (req,res,next)=>{
 //         jwt.verify(req.params.id, new Buffer('Allah', 'base64'),(err,decoded)=>{
@@ -250,33 +113,31 @@ router.post('/:id/:formatedAdres', (req,res,next)=>{
             }
             user.location.push(result);
             user.save();
+              var activity = new ActivityModel({
+                location:{
+                    start: { lat: req.body.lat, lng: req.body.lng },
+                    end: { lat: req.body.lat, lng: req.body.lng }
+                },
 
-            // var activity = new ActivityModel({
-            //     location:{
-            //         start: { lat: req.body.lat, lng: req.body.lng },
-            //         end: { lat: req.body.lat, lng: req.body.lng }
-            //     },
+                activity: '',
+                start: Date(),
+                end: Date(), 
+                startpoint: req.params.formatedAdres,
+                endpoint: req.params.formatedAdres,
+                user: req.params.id
+            });
 
-            //     activity: 'still',
-            //     start: Date(),
-            //     end: Date(), 
-            //     startpoint: req.params.formatedAdres,
-            //     endpoint: req.params.formatedAdres,
-            //     user: req.params.id
-            // });
+            activity.save();
 
-            // activity.save();
-            
+            /**
+             * [message description]
+             * @type {String}
+             */
             res.status(201).json({
                 message:'Your name is registerd',
                 obj: result 
             });
-        });
-
-
-
-
-
+        })
        
     })
 

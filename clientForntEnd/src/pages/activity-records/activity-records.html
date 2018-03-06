@@ -9,16 +9,16 @@
 </ion-header>
 <ion-toolbar>
 <ion-segment [(ngModel)]="activity">
-  <ion-segment-button value="walking" color="black1" (click)="getWalkingRecordsData()">
+  <ion-segment-button value="walking" color="black1">
     <ion-icon name="walk" class="larger"></ion-icon> Walking
   </ion-segment-button>
 
-  <ion-segment-button value="cycling" color="black1" (click)="getCyclingRecordsData()">
+  <ion-segment-button value="cycling" color="black1">
     <ion-icon name="bicycle" class="larger"></ion-icon> Cycling
   </ion-segment-button>
 
 
-  <ion-segment-button value="driving" color="black1" (click)="getDrivingRecordsData()">
+  <ion-segment-button value="driving" color="black1">
     <ion-icon name="car" class="larger"></ion-icon> Driving
   </ion-segment-button>
 </ion-segment>
@@ -45,10 +45,10 @@
 
         <ion-row>
           <ion-col col-4>
-            <ion-icon name="pin"></ion-icon> Address
+            <ion-icon name="pin"></ion-icon> Start from -{{walkingDatas.startpoint}}
           </ion-col>
           <ion-col col-18>
-            <ion-icon name="link"></ion-icon> To Veiw Map
+            <ion-icon name="pin"></ion-icon> End to- {{walkingDatas.startpoint}}
           </ion-col>
         </ion-row>
 
@@ -79,15 +79,16 @@
                 <h4 class="name"> <ion-icon name="bicycle" class="larger"></ion-icon>  {{cyclingDatas.activity}}</h4>
               </ion-col>
             </ion-row>
-    
+           
             <ion-row>
               <ion-col col-4>
-                <ion-icon name="pin"></ion-icon> Address
+                <ion-icon name="pin"></ion-icon> Start from -{{cyclingDatas.startpoint}}
               </ion-col>
               <ion-col col-18>
-                <ion-icon name="link"></ion-icon> To Veiw Map
+                <ion-icon name="pin"></ion-icon> End to- {{cyclingDatas.startpoint}}
               </ion-col>
             </ion-row>
+    
     
             <ion-row>
               <ion-col col-4>
@@ -119,10 +120,10 @@
 
         <ion-row>
           <ion-col col-4>
-            <ion-icon name="pin"></ion-icon> Address
+            <ion-icon name="pin"></ion-icon> Start from -{{drivingDatas.startpoint}}
           </ion-col>
           <ion-col col-18>
-            <ion-icon name="link"></ion-icon> To Veiw Map
+            <ion-icon name="pin"></ion-icon> End to- {{drivingDatas.startpoint}}
           </ion-col>
         </ion-row>
 

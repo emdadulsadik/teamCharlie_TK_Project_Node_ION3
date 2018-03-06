@@ -209,7 +209,7 @@ export class SetWalkingPage {
         this.getWalkingRecordsData();
         this.hide = true;
         // Below Function does not work properly
-        // this.makePolylines();
+        //  this.makePolylines();
       }
      
     )
@@ -361,8 +361,6 @@ TimeforHumans ( seconds ) {
  */
 shareActivity(activity: SetActivity, index: number) {
   console.log('We will do')
-
-  
 }
 
 

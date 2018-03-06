@@ -40,6 +40,7 @@ import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DatePicker } from '@ionic-native/date-picker';
+import { TimelineProvider } from '../providers/timeline/timeline';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { DatePicker } from '@ionic-native/date-picker';
     ActivityRecordsProvider,
     PlaceServiceProvider,
     ImageUploadProvider,
-    SetActivitiesProvider
+    SetActivitiesProvider,
+    TimelineProvider
   ]
 })
 export class AppModule {}

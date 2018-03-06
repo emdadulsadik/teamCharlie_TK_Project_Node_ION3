@@ -34,6 +34,10 @@ export class ActivityRecordsPage {
     ionViewDidLoad() { 
       console.log('ionViewDidLoad ActivityRecordsPage');
       // this.getActivityRecordsData();
+      this.getWalkingRecordsData();
+      this.getCyclingRecordsData();
+      this.getDrivingRecordsData();
+
     }
 
    /**
