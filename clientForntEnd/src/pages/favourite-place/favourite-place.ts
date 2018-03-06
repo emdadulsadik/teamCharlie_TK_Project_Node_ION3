@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
-import { AddPlacePage } from '../../pages/add-place/add-place';
-import {Place} from "../../models/place";
-import {PlaceServiceProvider} from "../../providers/place-service/place-service";
-import {PlacePage} from "../../pages/place/place";
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+/**
+ * Generated class for the FavouritePlacePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
@@ -13,33 +15,11 @@ import {PlacePage} from "../../pages/place/place";
 })
 export class FavouritePlacePage {
 
-  addPlacePage = AddPlacePage;
-  places: Place[] = [];
-
-  constructor(private modalCtrl: ModalController,
-              private placesService: PlaceServiceProvider) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ngOnInit() {
-    this.placesService.fetchPlaces()
-      .then(
-        (places: Place[]) => this.places = places
-      );
-  }
-
-  ionViewWillEnter() {
-    this.places = this.placesService.loadPlaces();
-  }
-
-  onOpenPlace(place: Place, index: number) {
-    const modal = this.modalCtrl.create(PlacePage, {place: place, index: index});
-    modal.present();
-    modal.onDidDismiss(
-      () => {
-        this.places = this.placesService.loadPlaces();
-      }
-    );
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FavouritePlacePage');
   }
 
 }

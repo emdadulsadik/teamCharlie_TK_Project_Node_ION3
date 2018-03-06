@@ -34,6 +34,14 @@
     "is_top_level": true,
     "variables": {}
   },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@4.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
   "ionic-plugin-keyboard": {
     "source": {
       "type": "registry",
@@ -70,30 +78,6 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-ionic-webview@^1.1.11"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-nativegeocoder": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-nativegeocoder"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-camera": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-camera@4.0.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-datepicker": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-datepicker@^0.9.3"
     },
     "is_top_level": true,
     "variables": {}

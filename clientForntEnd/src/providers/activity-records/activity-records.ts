@@ -6,23 +6,30 @@ import {  SetActivity } from "../../models/setActivites";
 import {  Location } from "../../models/location";
 import { User } from "../../models/user.model";
 import {  Headers } from '@angular/http';
-import { AggregatedTimeline } from "../../models/aggregatedTimeline";
-/*
-  [ Activity Records Viewer ]
-  @author - Emdadul Sadik
 
-*/
 
+/**
+ * 
+ * 
+ * @export
+ * @class ActivityRecordsProvider
+ */
 @Injectable()
 export class ActivityRecordsProvider {
 
   private setactivites: SetActivity[] = [];
 
-  // liveUrl = 'https://polar-mountain-79390.herokuapp.com/';
-  devUrl = 'http://localhost:5000/';
+  liveUrl = 'https://infinite-sea-86282.herokuapp.com/';
+  // devUrl = 'http://localhost:5000/';
 
   private setActivity: SetActivity[] = [];
 
+  /**
+   * Creates an instance of ActivityRecordsProvider.
+   * @param {Http} http 
+   * 
+   * @memberOf ActivityRecordsProvider
+   */
   constructor(public http: Http) {
     console.log('Hello Activity Records Provider');
   }
@@ -34,23 +41,39 @@ export class ActivityRecordsProvider {
    */
   getWalkingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.devUrl + 'user/walkinglist/' + id, {
+    return this.http.get(this.liveUrl + 'user/walkinglist/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }
 
 
+  /**
+   * 
+   * 
+   * @param {any} id 
+   * @returns 
+   * 
+   * @memberOf ActivityRecordsProvider
+   */
   getCyclingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.devUrl + 'user/cyclinglist/' + id, {
+    return this.http.get(this.liveUrl + 'user/cyclinglist/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }
 
 
+  /**
+   * 
+   * 
+   * @param {any} id 
+   * @returns 
+   * 
+   * @memberOf ActivityRecordsProvider
+   */
   getDrivingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.devUrl + 'user/drivinglist/' + id, {
+    return this.http.get(this.liveUrl + 'user/drivinglist/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }

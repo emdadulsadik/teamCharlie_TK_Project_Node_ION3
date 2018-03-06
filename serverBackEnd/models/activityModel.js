@@ -15,24 +15,15 @@ var User = require('../models/usersModel');
  * [locationSchema description]
  * @type {Schema}
  */
-
-//  var setWalkingSchema = new Schema({
-//     lat:{type: Number, required: true},
-//     lng:{type: Number, required: true},
-//     addressfull:{type: String, required: true},
-//     activity:{type: String, required: true},
-//     user : {type: Schema.Types.ObjectId,ref:'User'},
-//     created: {type: Date,  default: Date.now }
-// });
-
 var activitySchema = new Schema({
     location : { type:Object}, 
-    startpoint: {type:String},
-    endpoint: {type:String},
-    activity:{type: String, required: false },
+    startpoint:{type: String },
+    endpoint: {type: String},
+    setActivitiesID: {type: String },
+    activity:{type: String },
     user : {type: Schema.Types.ObjectId,ref:'User'},    
-    start : { type:Date, required:false },
-    end : { type:Date, required:false }
+    start : { type:Date},
+    end : { type:Date }
 });
 
 

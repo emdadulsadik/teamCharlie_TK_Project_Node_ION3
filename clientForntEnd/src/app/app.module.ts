@@ -4,22 +4,13 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation';
-import { NativeGeocoder } from '@ionic-native/native-geocoder';
-
-import { TimelineComponent } from '../components/timeline/timeline';
-import { TimelineTimeComponent } from '../components/timeline/timeline';
-import { TimelineItemComponent } from '../components/timeline/timeline';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { AgmCoreModule } from '@agm/core';
+
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { UsertabsPage } from '../pages/usertabs/usertabs';
-
-import { AddPlacePage } from '../pages/add-place/add-place';
-import { PlacePage } from '../pages/place/place';
-import { ActivityRecordsProvider } from '../providers/activity-records/activity-records';
 
 
 import { HttpModule } from '@angular/http';
@@ -36,12 +27,8 @@ import { Facebook } from '@ionic-native/facebook';
 import { PlaceServiceProvider } from '../providers/place-service/place-service';
 import { ImageUploadProvider } from '../providers/image-upload/image-upload';
 import { SetActivitiesProvider } from '../providers/set-activities/set-activities';
-import { File } from '@ionic-native/file';
-import { Camera } from '@ionic-native/camera';
-import { FileTransfer } from '@ionic-native/file-transfer';
-import { DatePicker } from '@ionic-native/date-picker';
+import { ActivityRecordsProvider } from '../providers/activity-records/activity-records';
 import { TimelineProvider } from '../providers/timeline/timeline';
-
 @NgModule({
   declarations: [
     MyApp,
@@ -51,12 +38,7 @@ import { TimelineProvider } from '../providers/timeline/timeline';
     SignupAndSigninPage,
     UsertabsPage,
     FeaturesPage,
-    AddPlacePage,
-    PlacePage,
-    TimelineComponent,
-    TimelineTimeComponent,
-    TimelineItemComponent
-  
+    
   ],
   imports: [
     BrowserModule,
@@ -64,9 +46,6 @@ import { TimelineProvider } from '../providers/timeline/timeline';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey :'AIzaSyAL70RjqzK5w5U0eNd2ANKmf0fzIPEnveQ'
-    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -77,30 +56,21 @@ import { TimelineProvider } from '../providers/timeline/timeline';
     SignupAndSigninPage,
     UsertabsPage,
     FeaturesPage,
-    AddPlacePage,
-    PlacePage,
-
-    
-    
+  
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
-    NativeGeocoder,
-    File,
-    DatePicker,
-    Camera,
-    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserSettingsProvider,
     LocationProvider,
     FacebookProvider,
     Facebook,
-    ActivityRecordsProvider,
     PlaceServiceProvider,
     ImageUploadProvider,
     SetActivitiesProvider,
+    ActivityRecordsProvider,
     TimelineProvider
   ]
 })

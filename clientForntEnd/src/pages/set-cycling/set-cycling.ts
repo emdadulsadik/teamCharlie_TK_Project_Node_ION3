@@ -28,6 +28,13 @@ import {
 } from '../../providers/set-activities/set-activities';
 declare var google;
 
+
+/**
+ * 
+ * 
+ * @export
+ * @class SetCyclingPage
+ */
 @IonicPage()
 @Component({
   selector: 'page-set-cycling',
@@ -37,14 +44,30 @@ declare var google;
 
 export class SetCyclingPage {
 
+  /**
+   * 
+   * 
+   * @type {ElementRef}
+   * @memberOf SetCyclingPage
+   */
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   hide: boolean = false;
-  activity : string = "cycling";
+  activity : string = "Cycling";
   setActivity : SetActivity[] = [];
   lat: any;
   lng: any;
 
+  /**
+   * Creates an instance of SetCyclingPage.
+   * @param {NavController} navCtrl 
+   * @param {NavParams} navParams 
+   * @param {Storage} storage 
+   * @param {Geolocation} geolocation 
+   * @param {SetActivitiesProvider} stActivityProvider 
+   * 
+   * @memberOf SetCyclingPage
+   */
   constructor(
       public navCtrl: NavController, 
       public navParams: NavParams, 
@@ -52,26 +75,35 @@ export class SetCyclingPage {
       public geolocation: Geolocation,
       public stActivityProvider: SetActivitiesProvider ) {}
 
+    /**
+     * 
+     * 
+     * 
+     * @memberOf SetCyclingPage
+     */
     ionViewDidLoad() {
       console.log('ionViewDidLoad SetWorkingPage');
  
 
     }
 
+
   /**
-   * @description- Get the token value form sqlLite Storage
-   * @author- Emdadul Sadik
-   * @type {Promise<any>}
-   * @memberOf UserManagementPage
+   * 
+   * 
+   * @type {Promise < any >}
+   * @memberOf SetCyclingPage
    */
   token: Promise < any > = this.storage.get('token').then((val) => {
     return this.token = val;
   }).catch( err => console.log(err) );
 
+ 
   /**
-   * @description- Go back to root page if token is valid.
-   * @author- Emdadul Sadik
-   * @memberOf SetActivity
+   * 
+   * 
+   * 
+   * @memberOf SetCyclingPage
    */
   goToRootAgain() {
     this.storage.get('token').then((val) => {
@@ -80,20 +112,32 @@ export class SetCyclingPage {
     })
   }
 
-
-   /**
-   * @description - Get Values from Storage (SQlite IndedDB)
-   * @author- Emdadul Sadik
-   * @memberOf SetActivity
+  /**
+   * 
+   * 
+   * @type {Promise < any >}
+   * @memberOf SetCyclingPage
    */
   userId: Promise < any > = this.storage.get('userId').then((val) => {
     return this.userId = val;
   }).catch( err => console.log(err) );
 
+  /**
+   * 
+   * 
+   * @type {Promise < any >}
+   * @memberOf SetCyclingPage
+   */
   setWalkingUserID: Promise < any > = this.storage.get('setWalkingUserID').then((val) => {
     return this.setWalkingUserID = val;
   }).catch( err => console.log(err) );
 
+  /**
+   * 
+   * 
+   * @type {Promise < any >}
+   * @memberOf SetCyclingPage
+   */
   setActivities: Promise < any > = this.storage.get('setActivities').then((val) => {
     return this.setActivities = val;
   }).catch( err => console.log(err) );
@@ -101,12 +145,14 @@ export class SetCyclingPage {
 
 
 
-/**
-   * @description- Change the Footbar to default if token is null
-   * @author-Emdadul Sadik
-   * @memberOf UserManagementPage
-   */
 
+
+  /**
+   * 
+   * 
+   * 
+   * @memberOf SetCyclingPage
+   */
   startCycling(){
     this.geolocation.getCurrentPosition().then(
       location => {
@@ -128,7 +174,7 @@ export class SetCyclingPage {
           var bodyObject = new SetActivity(latLng);
           console.log(latLng.lat);
           this.storage.get('userId').then((userId)=>{
-            this.stActivityProvider.addStartActivitiesInfo(bodyObject,userId,startpoint,this.activity).subscribe((data)=>{
+            this.stActivityProvider.setStartActivitiesInfo(bodyObject,userId,startpoint,this.activity).subscribe((data)=>{
               console.log(data);
                 this.storage.set('setActivitiesIDForCycling', data.setActivitiesID);
                 this.storage.set('setActivities', data.activity);
@@ -152,12 +198,12 @@ export class SetCyclingPage {
 
 
 
-/**
-   * @description- Change the Footbar to default if token is null
-   * @author-Emdadul Sadik
-   * @memberOf UserManagementPage
+  /**
+   * 
+   * 
+   * 
+   * @memberOf SetCyclingPage
    */
-
   endCycling(){
     this.geolocation.getCurrentPosition().then(
       location => {
@@ -179,7 +225,7 @@ export class SetCyclingPage {
           var bodyObject = new SetActivity(latLng);
           console.log(latLng.lat);
           this.storage.get('setActivitiesIDForCycling').then((setActivitiesIDForCycling)=>{
-            this.stActivityProvider.addEndActivitiesInfo(bodyObject,setActivitiesIDForCycling,endpoint).subscribe((data)=>{
+            this.stActivityProvider.setEndActivitiesInfo(bodyObject,setActivitiesIDForCycling,endpoint).subscribe((data)=>{
               console.log(data);
             },(error)=>{
               console.log(error);
@@ -203,10 +249,14 @@ export class SetCyclingPage {
     )
   }
 
+
   /**
-   * @description- Change the Footbar to default if token is null
-   * @author-Khondakar Readul Islam
-   * @memberOf UserManagementPage
+   * 
+   * 
+   * @param {any} marker 
+   * @param {any} content 
+   * 
+   * @memberOf SetCyclingPage
    */
   addInfoWindow(marker, content) {
 
@@ -223,10 +273,11 @@ export class SetCyclingPage {
 
 
 
-  /**
-  * @description- Change the Footbar to default if token is null
-  * @author-Khondakar Readul Islam
-  * @memberOf ActivityRecords
+ /**
+  * 
+  * 
+  * 
+  * @memberOf SetCyclingPage
   */
  getCyclingRecordsData(){
   this.storage.get('setActivitiesIDForCycling').then((setActivitiesIDForCycling) => {
@@ -253,10 +304,16 @@ export class SetCyclingPage {
 }
 
 
-  /**
-  * @description- Change the Footbar to default if token is null
-  * @author-Khondakar Readul Islam
-  * @memberOf ActivityRecords
+ /**
+  * 
+  * 
+  * @param {any} lat1 
+  * @param {any} lon1 
+  * @param {any} lat2 
+  * @param {any} lon2 
+  * @returns 
+  * 
+  * @memberOf SetCyclingPage
   */
  getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   var R = 6371; // Radius of the earth in km
@@ -271,21 +328,28 @@ export class SetCyclingPage {
   var d = Math.round(R * c); // Distance in km
   return d;
 }
+
 /**
-* @description- Change the Footbar to default if token is null
-* @author-Khondakar Readul Islam
-* @memberOf ActivityRecords
-*/
+ * 
+ * 
+ * @param {any} deg 
+ * @returns 
+ * 
+ * @memberOf SetCyclingPage
+ */
 deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
 
 /**
-* @description- Change the Footbar to default if token is null
-* @author-Khondakar Readul Islam
-* @memberOf ActivityRecords
-*/
+ * 
+ * 
+ * @param {any} seconds 
+ * @returns 
+ * 
+ * @memberOf SetCyclingPage
+ */
 TimeforHumans ( seconds ) {
   var levels = [
       [Math.floor(seconds / 31536000), 'years'],
@@ -306,12 +370,12 @@ TimeforHumans ( seconds ) {
 
 
 /**
-  * @description- Change the Footbar to default if token is null
-  * @author-Khondakar Readul Islam
-  * @param {Location} location 
-  * @param {number} index 
-  * 
-  * @memberOf FindFriendsPage
+ * 
+ * 
+ * @param {SetActivity} activity 
+ * @param {number} index 
+ * 
+ * @memberOf SetCyclingPage
  */
 shareActivity(activity: SetActivity, index: number) {
   console.log('We will do')

@@ -14,9 +14,9 @@
     <ion-card-content>
       <h4>User Name: {{ location.userName }}</h4>
       <h5>Full Name: {{ location.firstName }} {{ location.lastName }}  </h5>
-      <h5>Email Address: {{ location.emailAddress }} </h5>
-      <h5>Address: {{ location.formatedAdres }} </h5>
-      <p class="justify"> Last Active:  {{location.created | date:'short'}} </p>
+      <h5>Address: {{ location.formatedAddress }} </h5>
+      <h5>Email Address: {{ location.formatedAdres }} </h5>
+      <p class="justify"> Created Date:  {{location.created | date:'short'}} </p>
     </ion-card-content>
     <ion-row>
       <ion-col>

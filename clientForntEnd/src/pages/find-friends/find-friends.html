@@ -35,8 +35,9 @@
                 <img src="assets/imgs/profile-images/avatar/img45.jpg">
               </ion-avatar>
               <h2>User Name: {{location.userName}} </h2>
+              <p>Address:{{location.formatedAddress}} </p>
               <p>Last Active Time:{{location.created | date:'short'}} </p>
-              <p>Address:{{location.formatedAdres}} </p>
+             
             </ion-item>
 
             <ion-row>
@@ -65,3 +66,4 @@
     </ion-title>
   </ion-toolbar>
 </ion-footer>
+

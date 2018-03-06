@@ -14,6 +14,14 @@ import { SetCyclingPage } from '../set-cycling/set-cycling';
 })
 export class SetActivitiesPage {
 
+  /**
+   * Creates an instance of SetActivitiesPage.
+   * @param {NavController} navCtrl 
+   * @param {NavParams} navParams 
+   * @param {Storage} storage 
+   * 
+   * @memberOf SetActivitiesPage
+   */
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: Storage) {
@@ -53,14 +61,38 @@ goToRootAgain(){
   })
 }
 
+
+/**
+ * 
+ * @description- []
+ * @author-Khondakar Readul Islam
+ * @version 0.0.1
+ * @memberOf SetActivitiesPage
+ */
 goToSetWorking(){
   this.navCtrl.push('SetWalkingPage');
 }
 
+
+/**
+ * 
+ * @description- []
+ * @author-Khondakar Readul Islam
+ * @version 0.0.1
+ * @memberOf SetActivitiesPage
+ */
 goToSetDriving(){
   this.navCtrl.push('SetDrivingPage');
 }
 
+
+/**
+ * @description- []
+ * @author-Khondakar Readul Islam
+ * @version 0.0.1
+ * 
+ * @memberOf SetActivitiesPage
+ */
 goToSetCycling(){
   this.navCtrl.push('SetCyclingPage')
 }

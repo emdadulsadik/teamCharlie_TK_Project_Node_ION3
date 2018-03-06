@@ -13,20 +13,30 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require("multer");
 const cors = require("cors");
-const socket_io    = require( "socket.io" );
 
 const appRoutes = require('./routes/app');
 const userSignupRoutes = require('./routes/signup');
 const userSigninRoutes = require('./routes/signin');
 const userLocationRoutes = require('./routes/location');
-const userWalkingRoutes = require('./routes/activites');
-const userChatRoutes = require('./routes/chat');
+const userActivitiesRoutes = require('./routes/activities');
 
 const imageUpload = require('./routes/imageUpload');
-const app = express();
 
-// mongoose.connect('mongodb://heroku_vnc0nx9j:j09dr65ttb5t52ul7odda2fofo@ds147118.mlab.com:47118/heroku_vnc0nx9j');
- mongoose.connect('localhost:27017/social-life-tracker');
+const UPLOAD_PATH = 'uploads';
+// Multer Settings for file upload
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, exports.UPLOAD_PATH);
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now());
+    }
+});
+const upload = multer({ storage: storage });
+
+const app = express();
+mongoose.connect('mongodb://heroku_kv48wt3p:8phg6c6hl8k337vmgoj71gvcql@ds157818.mlab.com:57818/heroku_kv48wt3p');
+// mongoose.connect('localhost:27017/social-life-tracker');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,11 +66,11 @@ app.use((req, res, next)=> {
     res.setHeader('Access-Control-Allow-Credentials', 'true')
     next();
 });
+
 app.use('/user', userSignupRoutes);
 app.use('/user', userSigninRoutes);
 app.use('/user', userLocationRoutes);
-app.use('/user', userWalkingRoutes);
-app.use('/user', userChatRoutes);
+app.use('/user', userActivitiesRoutes);
 app.use('/user', imageUpload);
 app.use('/', appRoutes);
 
@@ -69,7 +79,6 @@ app.use(function (req, res, next) {
     return res.render('index');
 });
 
-
-
-
+module.exports = UPLOAD_PATH; 
+module.exports = upload; 
 module.exports = app;

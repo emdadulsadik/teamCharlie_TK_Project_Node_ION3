@@ -1,39 +1,13 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef
-} from '@angular/core';
-import {
-  IonicPage,
-  NavController,
-  NavParams
-} from 'ionic-angular';
-import {
-  TabsPage
-} from '../tabs/tabs';
-import {
-  UsertabsPage
-} from '../usertabs/usertabs';
-import {
-  Storage
-} from '@ionic/storage';
-import {
-  Geolocation
-} from '@ionic-native/geolocation';
-import {
-  Location
-} from '../../models/location';
-import {
-  LocationProvider
-} from '../../providers/location/location';
-import {
-  ProfilePage
-} from '../profile/profile';
-
-import 'rxjs/add/operator/map';
-import {
-  Http
-} from '@angular/http';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+import { UsertabsPage } from '../usertabs/usertabs';
+import { Storage } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
+import { NgForm } from '@angular/forms';
+import { Location } from '../../models/location';
+import { LocationProvider } from '../../providers/location/location';
+import { ProfilePage } from '../profile/profile';
 
 declare var google;
 @IonicPage()
@@ -46,26 +20,27 @@ export class FindFriendsPage {
   map: any;
   hide: boolean = false;
   locations: Location[];
-  count:number;
-  addressFull=[];
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public storage: Storage,
-    public geolocation: Geolocation,
-    public locationService: LocationProvider,
-    public http: Http
 
-  ) {}
+ 
+
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+     public storage: Storage,
+     public geolocation: Geolocation, 
+    public locationService: LocationProvider 
+     
+   ) {
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddFavouritePlacePage');
-    // console.log(this.location);
+    console.log(this.locations);
     this.mapInit();
-    this.locationService.getLocation().subscribe((data) => {
-      this.locations = data;
-      console.log(this.locations);
-    });
-    // this.findAddress();
+   this.locationService.getLocation().subscribe((data)=>{
+          this.locations = data ; 
+          console.log(this.locations);
+   })  
   }
 
 
@@ -83,49 +58,45 @@ export class FindFriendsPage {
   }
 
   /**
-   * @description- Get the token value form sqlLite Storage
-   * @author-Khondakar Readul Islam
-   * @type {Promise<any>}
-   * @memberOf UserManagementPage
-   */
-  token: Promise < any > = this.storage.get('token').then((val) => {
-    return this.token = val;
-  }).catch(
-    (err) => {
-      console.log(err);
-    }
-  )
-
-
-  /**
-   * @description- Change the Footbar to default if token is null
-   * @author-Khondakar Readul Islam
-   * @memberOf UserManagementPage
-   */
-  goToRootAgain() {
-    this.storage.get('token').then((val) => {
-      if (val == null) {
-        this.navCtrl.setRoot(TabsPage);
-      } else {
-        this.navCtrl.setRoot(UsertabsPage);
-      }
-    })
+ * @description- Get the token value form sqlLite Storage
+ * @author-Khondakar Readul Islam
+ * @type {Promise<any>}
+ * @memberOf UserManagementPage
+ */
+token:Promise<any> = this.storage.get('token').then((val)=>{
+  return this.token = val;
+}).catch(
+  (err)=>{
+    console.log(err);
   }
+)
 
 
-  /**
-   * @description- Change the Footbar to default if token is null
-   * @author-Khondakar Readul Islam
-   * @memberOf UserManagementPage
-   */
-  userId: Promise < any > = this.storage.get('userId').then((val) => {
-    return this.userId = val;
-  }).catch(
-    (err) => {
-      console.log(err);
+/**
+* @description- Change the Footbar to default if token is null
+* @author-Khondakar Readul Islam
+* @memberOf UserManagementPage
+*/
+goToRootAgain(){
+  this.storage.get('token').then((val)=>{
+    if(val==null){
+      this.navCtrl.setRoot(TabsPage); 
+    }else{
+      this.navCtrl.setRoot(UsertabsPage); 
     }
-  )
-  /**
+  })
+}
+
+
+userId:Promise<any> = this.storage.get('userId').then((val)=>{
+  return this.userId = val; 
+}).catch(
+  (err)=>{
+    console.log(err); 
+  }
+)
+
+ /**
    * @description- Change the Footbar to default if token is null
    * @author-Khondakar Readul Islam
    * @memberOf UserManagementPage
@@ -150,6 +121,7 @@ export class FindFriendsPage {
             var address = (results[0].formatted_address); 
           }
           this.storage.get('userId').then((userId)=>{
+            console.log(latLng);
             this.locationService.addLocation(latLng,userId,address).subscribe((data)=>{
               console.log(data);
             },(error)=>{
@@ -170,14 +142,12 @@ export class FindFriendsPage {
     )
   }
 
-
   /**
    * @description- Change the Footbar to default if token is null
    * @author-Khondakar Readul Islam
    * @memberOf UserManagementPage
    */
   onLocateFriends() {
-    this.count=this.locations.length;
     for (var i = 0; i < this.locations.length; ++i) {
       let marker = new google.maps.Marker({
         map:this.map,
@@ -185,7 +155,7 @@ export class FindFriendsPage {
         position: new google.maps.LatLng(this.locations[i].lat, this.locations[i].lng),
       }); 
       var content = `<h5>${this.locations[i].userName}</h5>
-                    <p>${ this.locations[i].formatedAdres }  </p>
+                    <p>${ this.locations[i].formatedAddress }  </p>
                     <p>Active Time: ${this.locations[i].created}</p>`;
       this.addInfoWindow(marker, content); 
     }
@@ -193,30 +163,14 @@ export class FindFriendsPage {
     console.log('Hitting')
   }
 
- /**
-   * @description- Change the Footbar to default if token is null
-   * @author-Wazid Ali
-   * @memberOf UserManagementPage
-   */
-  getArrayIteam(address){
-    console.log(this.count);
-    this.addressFull.push(address);
-    this.count--;
-    if(this.count<2){
-        console.log(this.addressFull);
-        for(var i=0;i<this.locations.length; i++){
-            var content = `<h4>${this.locations[i].userName}</h4>
-                            <p>${ this.addressFull[i] }  </p>
-                            <p>Active Time: ${this.locations[i].created}</p>
-                            `;
-            let marker = new google.maps.Marker({
-              map: this.map,
-              animation: google.maps.Animation.DROP,
-              position: new google.maps.LatLng(this.locations[i].lat, this.locations[i].lng),
-            });
-            this.addInfoWindow(marker, content);
-        }
-    }
+addInfoWindow(marker, content){
+  let infoWindow = new google.maps.InfoWindow({
+    content: content
+  });
+  google.maps.event.addListener(marker, 'click', () => {
+    infoWindow.open(this.map, marker);
+  });
+ 
 }
 
 /**
@@ -227,31 +181,12 @@ export class FindFriendsPage {
   * 
   * @memberOf FindFriendsPage
  */
-  viewProfile(location: Location, index: number) {
-    this.navCtrl.push('ProfilePage', {
-      location: location,
-      index: index
-    });
-  }
-
-
-  /**
-   * @description- Change the Footbar to default if token is null
-   * @author-Khondakar Readul Islam
-   * @memberOf UserManagementPage
-   */
-  addInfoWindow(marker, content) {
-
-    let infoWindow = new google.maps.InfoWindow({
-      content: content
-    });
-
-    google.maps.event.addListener(marker, 'click', () => {
-      infoWindow.open(this.map, marker);
-    });
-
-  }
-
+viewProfile(location: Location, index: number) {
+  this.navCtrl.push('ProfilePage', {
+    location: location,
+    index: index
+  });
+}
 
 
 }

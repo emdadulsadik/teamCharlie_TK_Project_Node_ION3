@@ -15,12 +15,18 @@ var User = require('../models/usersModel');
  * [locationSchema description]
  * @type {Schema}
  */
+
+/**
+ * [locationSchema description]
+ * @type {Schema}
+ */
 var locationSchema = new Schema({
-    lat:{type: Number, required: true},
-    lng:{type: Number,required: true },
-    formatedAdres:{type: String },
+    lat:{type: Number},
+    lng:{type: Number},
+    formatedAddress: {type:String},
     user : {type: Schema.Types.ObjectId,ref:'User'},
     created: {type: Date,  default: Date.now }
 });
+
 
 module.exports = mongoose.model('Location', locationSchema);

@@ -9,9 +9,7 @@ import {
 import {
   SetActivity
 } from "../../models/setActivites";
-import {
-  DatePicker
-} from '@ionic-native/date-picker';
+
 import {
   TimelineProvider
 } from '../../providers/timeline/timeline';
@@ -26,8 +24,7 @@ import {
 export class TimelinePage {
 
   setActivity:SetActivity[]=[];
-  still:string;
-  realActivity:boolean;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public timelineProvider: TimelineProvider,
@@ -60,16 +57,8 @@ export class TimelinePage {
             item.timedelta = new Date(item.end).valueOf() - new Date(item.start).valueOf();
             item.timedelta = this.TimeforHumans( item.timedelta / 1000 );
             this.setActivity.push(item);
-
             
-
           }; 
-
-          if(data.activity==null){
-            this.realActivity = false
-          }else{
-            this.realActivity = true
-          }
 
         },
         

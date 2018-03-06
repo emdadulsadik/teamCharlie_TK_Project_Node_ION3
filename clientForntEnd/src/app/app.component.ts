@@ -70,6 +70,8 @@ ionViewDidLoad(){
  
 }
 
+
+
 goToRootAgain(){
   this.nav.setRoot(TabsPage);
 }

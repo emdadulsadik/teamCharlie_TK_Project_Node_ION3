@@ -23,6 +23,7 @@ const jwt = require('jsonwebtoken');
  * @type {[type]}
  */
 var UserSignUpModel = require('../models/usersModel'); 
+
 /**
  * [description]
  * @author-Khondakar Readul Islam

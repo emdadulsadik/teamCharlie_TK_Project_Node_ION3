@@ -38,7 +38,7 @@ export class SetDrivingPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   hide: boolean = false;
-  activity : string = "driving";
+  activity : string = "Driving";
   setActivity : SetActivity[] = [];
   lat: any;
   lng: any;
@@ -125,7 +125,7 @@ export class SetDrivingPage {
           var bodyObject = new SetActivity(latLng);
           console.log(latLng.lat);
           this.storage.get('userId').then((userId)=>{
-            this.stActivityProvider.addStartActivitiesInfo(bodyObject,userId,startpoint,this.activity).subscribe((data)=>{
+            this.stActivityProvider.setStartActivitiesInfo(bodyObject,userId,startpoint,this.activity).subscribe((data)=>{
               console.log(data);
                 this.storage.set('setActivitiesIDForDriving', data.setActivitiesID);
                 this.storage.set('setActivities', data.activity);
@@ -147,7 +147,7 @@ export class SetDrivingPage {
     )
   }
 
-
+  
 
 /**
    * @description- Change the Footbar to default if token is null
@@ -176,7 +176,7 @@ export class SetDrivingPage {
           var bodyObject = new SetActivity(latLng);
           console.log(latLng.lat);
           this.storage.get('setActivitiesIDForDriving').then((setActivitiesIDForDriving)=>{
-            this.stActivityProvider.addEndActivitiesInfo(bodyObject,setActivitiesIDForDriving,endpoint).subscribe((data)=>{
+            this.stActivityProvider.setEndActivitiesInfo(bodyObject,setActivitiesIDForDriving,endpoint).subscribe((data)=>{
               console.log(data);
             },(error)=>{
               console.log(error);

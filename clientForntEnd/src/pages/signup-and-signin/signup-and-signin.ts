@@ -28,7 +28,7 @@ import { UsertabsPage } from '../usertabs/usertabs';
   templateUrl: 'signup-and-signin.html',
 })
 export class SignupAndSigninPage {
-  segments: string; 
+
   selectOptions = ['Admin', 'Editor', 'Modarator'];
   signUpForm: FormGroup;
   signInForm: FormGroup

@@ -9,19 +9,43 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { ActivityRecordsProvider } from '../../providers/activity-records/activity-records';
 
 
-// declare var google;
 
 
+
+/**
+ * 
+ * 
+ * @export
+ * @class ActivityRecordsPage
+ */
 @IonicPage()
 @Component({
   selector: 'page-activity-records',
   templateUrl: 'activity-records.html',
 })
 export class ActivityRecordsPage {
+
+  /**
+   * 
+   * 
+   * @type {string}
+   * @memberOf ActivityRecordsPage
+   */
   activity:string;
   walkingData:SetActivity [] = [];
   cyclingData:SetActivity [] = [];
   drivingData:SetActivity [] = [];
+
+    /**
+     * Creates an instance of ActivityRecordsPage.
+     * @param {NavController} navCtrl 
+     * @param {NavParams} navParams 
+     * @param {Storage} storage 
+     * @param {Geolocation} geolocation 
+     * @param {ActivityRecordsProvider} ActivityRecordsProvider 
+     * 
+     * @memberOf ActivityRecordsPage
+     */
     constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
@@ -31,12 +55,19 @@ export class ActivityRecordsPage {
     ){}
 
 
+    /**
+     * 
+     * 
+     * 
+     * @memberOf ActivityRecordsPage
+     */
     ionViewDidLoad() { 
       console.log('ionViewDidLoad ActivityRecordsPage');
       // this.getActivityRecordsData();
+      this.getDrivingRecordsData();
       this.getWalkingRecordsData();
       this.getCyclingRecordsData();
-      this.getDrivingRecordsData();
+     
 
     }
 
@@ -98,6 +129,12 @@ export class ActivityRecordsPage {
 
   }
 
+  /**
+   * 
+   * 
+   * 
+   * @memberOf ActivityRecordsPage
+   */
   getCyclingRecordsData(){
     this.storage.get('userId').then((userId) => {
       this.ActivityRecordsProvider.getCyclingRecords(userId).subscribe(
@@ -123,6 +160,12 @@ export class ActivityRecordsPage {
     }).catch( err => console.log(err) );
   }
 
+  /**
+   * 
+   * 
+   * 
+   * @memberOf ActivityRecordsPage
+   */
   getDrivingRecordsData(){
     this.storage.get('userId').then((userId) => {
       this.ActivityRecordsProvider.getDrivingRecords(userId).subscribe(

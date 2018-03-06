@@ -71,12 +71,6 @@ export class FeaturesPage implements OnInit {
   }
 
 
-  /**
-   * 
-   * 
-   * 
-   * @memberOf FeaturesPage
-   */
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
     console.log('Current index is', currentIndex);
@@ -84,12 +78,6 @@ export class FeaturesPage implements OnInit {
     console.log(this.index);
   }
 
-  /**
-   * 
-   * 
-   * 
-   * @memberOf FeaturesPage
-   */
   enterPages(){
     if(this.index =='1'){
       this.navCtrl.setRoot('UserManagementPage');

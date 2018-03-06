@@ -26,6 +26,15 @@ const locationModel = require('../models/locationModel');
 const UserSignInModel = require('../models/usersModel'); 
 const ActivityModel = require('../models/activityModel'); 
 
+/**
+ * [For Finding Friends and getting the current location of user this route is using]
+ * @param  {[type]} '/allLocation' [description]
+ * @author-Khondakar Readul Islam
+ * @version 0.0.1
+ * @author [author] Khondakar Readul Islam
+ * @param  {[type]} (req,res,next) [description]
+ * @return {[type]}                [description]
+ */
 router.get('/allLocation', (req,res,next)=>{
     locationModel.find()
     .populate('user')
@@ -68,13 +77,13 @@ router.get('/allLocation', (req,res,next)=>{
 /**
  * [description]
  * @author-Khondakar Readul Islam
- * @version 1.0.0
+ * @version 0.0.1
  * @param  {[type]} '/location'                      [description]
  * @param  {[type]} (req,res,next)                 [description]
  * @param  {[type]} });		addLocation.save((err,result [description]
  * @return {[type]}                                [description]
  */
-router.post('/:id/:formatedAdres', (req,res,next)=>{
+router.post('/:id/:formatedAddress', (req,res,next)=>{
    // var decoded = jwt.decoded(req.query.token);
    UserSignInModel.findById(req.params.id, (err, user)=>{
          /**
@@ -91,7 +100,7 @@ router.post('/:id/:formatedAdres', (req,res,next)=>{
         var addLocation = new locationModel({
             lat: req.body.lat,
             lng: req.body.lng,
-            formatedAdres: req.params.formatedAdres,
+            formatedAddress: req.params.formatedAddress,
             user: req.params.id
         });
         /**
@@ -113,29 +122,47 @@ router.post('/:id/:formatedAdres', (req,res,next)=>{
             }
             user.location.push(result);
             user.save();
-              var activity = new ActivityModel({
+
+/** Might be proble arose from here if location null showed*/
+        var activity = new ActivityModel({
                 location:{
                     start: { lat: req.body.lat, lng: req.body.lng },
                     end: { lat: req.body.lat, lng: req.body.lng }
                 },
-
-                activity: '',
+                startpoint: req.params.formatedAddress,
+                endpoint: req.params.formatedAddress,
+                activity: 'Still',
+                user: req.params.id,
                 start: Date(),
                 end: Date(), 
-                startpoint: req.params.formatedAdres,
-                endpoint: req.params.formatedAdres,
-                user: req.params.id
+                
+                
+               
             });
+            activity.save((err,result)=>{
+                /**
+             * [if description]
+             * @param  {[type]} err [description]
+             * @return {[type]}     [description]
+             */
+            if(err){
+                return res.status(500).json({
+                    title: 'Error',
+                    error: err
+                });
+            }
 
-            activity.save();
+            user.activity.push(result);
+            user.save()
 
+            });
+        
             /**
              * [message description]
              * @type {String}
              */
             res.status(201).json({
                 message:'Your name is registerd',
-                obj: result 
             });
         })
        
