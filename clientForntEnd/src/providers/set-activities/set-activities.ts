@@ -23,8 +23,8 @@ import {
 @Injectable()
 export class SetActivitiesProvider {
   private setactivites: SetActivity[] = [];
-  liveUrl = 'https://infinite-sea-86282.herokuapp.com/';
-  // devUrl = 'http://localhost:5000/';
+  // liveUrl = 'https://polar-mountain-79390.herokuapp.com/';
+  devUrl = 'http://localhost:5000/';
 
   private setActivity: SetActivity[] = [];
 
@@ -49,7 +49,7 @@ export class SetActivitiesProvider {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.post(this.liveUrl + 'user/start/' + id+'/'+startpoint+'/'+activity, body, {
+    return this.http.post(this.devUrl + 'user/start/' + id+'/'+startpoint+'/'+activity, body, {
         headers: headers
       })
       .map((response: Response) => response.json())
@@ -72,7 +72,7 @@ export class SetActivitiesProvider {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.patch(this.liveUrl + 'user/end/' +id+'/'+endpoint, body, {
+    return this.http.patch(this.devUrl + 'user/end/' +id+'/'+endpoint, body, {
         headers: headers
       })
       .map((response: Response) => response.json())
@@ -87,7 +87,7 @@ export class SetActivitiesProvider {
    * 
    */
   getLocation(id) {
-    return this.http.get(this.liveUrl + 'user/walkinglist/' + id)
+    return this.http.get(this.devUrl + 'user/walkinglist/' + id)
       .map((response: Response) => {
         const activities = response.json().obj
         let transformedLocation: SetActivity[] = [];
@@ -113,7 +113,7 @@ export class SetActivitiesProvider {
    */
   getWalkingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.liveUrl + 'user/singleWalkingInfo/' + id, {
+    return this.http.get(this.devUrl + 'user/singleWalkingInfo/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }
@@ -130,7 +130,7 @@ export class SetActivitiesProvider {
    */
   getCyclingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.liveUrl + 'user/singleCyclingInfo/' + id, {
+    return this.http.get(this.devUrl + 'user/singleCyclingInfo/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }
@@ -146,7 +146,7 @@ export class SetActivitiesProvider {
    */
   getDrivingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.liveUrl + 'user/singleDrivingInfo/' + id, {
+    return this.http.get(this.devUrl + 'user/singleDrivingInfo/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }

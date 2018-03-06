@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
  * @type {[type]}
  */
 var Schema = mongoose.Schema;
-
+var User = require('../models/usersModel');
 
 /**
  * [imageUploadSchema description]
@@ -18,7 +18,9 @@ var Schema = mongoose.Schema;
 var imageUploadSchema = new Schema({
     filename:{type: String},
     originalname:{type: String },
+    imageData:{type: String },
     desc: {type: String},
+    user : {type: Schema.Types.ObjectId,ref:'User'},
     created: {type: Date,  default: Date.now }
 });
 

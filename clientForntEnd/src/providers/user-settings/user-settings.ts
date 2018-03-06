@@ -16,8 +16,6 @@ export class UserSettingsProvider {
     console.log('Hello UserServiceProvider Provider');
   }
 
-  liveUrl = 'https://infinite-sea-86282.herokuapp.com/';
-  //  devUrl = 'http://localhost:5000/';
   	/**
      * [signup description] 
      * @author-Khondakar Readul Islam
@@ -27,7 +25,7 @@ export class UserSettingsProvider {
     createUser(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(this.liveUrl +'user/signup', body, {headers: headers})
+        return this.http.post('http://localhost:5000/user/signup', body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -40,7 +38,7 @@ export class UserSettingsProvider {
     loggin(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(this.liveUrl+'user/signin', body, {headers: headers})
+        return this.http.post('http://localhost:5000/user/signin', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -53,7 +51,7 @@ export class UserSettingsProvider {
     * @param {[type]} userID [description]
     */
     deleted(userID) {
-      return this.http.delete(this.liveUrl +'user/'+userID)
+      return this.http.delete('http://localhost:5000/user/'+userID)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -69,7 +67,7 @@ export class UserSettingsProvider {
     resetPass(user: User, userID){
        const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-         return this.http.patch(this.liveUrl +'user/'+userID, body, {headers: headers})
+         return this.http.patch('http://localhost:5000/user/'+userID, body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }

@@ -19,8 +19,8 @@ export class ActivityRecordsProvider {
 
   private setactivites: SetActivity[] = [];
 
-  liveUrl = 'https://infinite-sea-86282.herokuapp.com/';
-  // devUrl = 'http://localhost:5000/';
+  // liveUrl = 'https://polar-mountain-79390.herokuapp.com/';
+  devUrl = 'http://localhost:5000/';
 
   private setActivity: SetActivity[] = [];
 
@@ -41,7 +41,7 @@ export class ActivityRecordsProvider {
    */
   getWalkingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.liveUrl + 'user/walkinglist/' + id, {
+    return this.http.get(this.devUrl + 'user/walkinglist/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }
@@ -57,7 +57,7 @@ export class ActivityRecordsProvider {
    */
   getCyclingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.liveUrl + 'user/cyclinglist/' + id, {
+    return this.http.get(this.devUrl + 'user/cyclinglist/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }
@@ -73,7 +73,7 @@ export class ActivityRecordsProvider {
    */
   getDrivingRecords( id) {    
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.liveUrl + 'user/drivinglist/' + id, {
+    return this.http.get(this.devUrl + 'user/drivinglist/' + id, {
         headers: headers
     }).map((response: Response) => {  return response.json().obj ; })
   }

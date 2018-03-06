@@ -11,8 +11,8 @@ export class LocationProvider {
   constructor(public http: Http) {
     console.log('Hello LocationProvider Provider');
   }
-  liveUrl = 'https://infinite-sea-86282.herokuapp.com/';
-//  devUrl = 'http://localhost:5000/';
+ // liveUrl = 'https://polar-mountain-79390.herokuapp.com/';
+ devUrl = 'http://localhost:5000/';
   	/**
      * [addLocation description] 
      * @author-Khondakar Readul Islam
@@ -22,7 +22,7 @@ export class LocationProvider {
     addLocation(location: Location, id, formatedAddress) {
       const body = JSON.stringify(location);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post(this.liveUrl + 'user/' + id+ '/'+ formatedAddress, body, {headers: headers})
+      return this.http.post(this.devUrl + 'user/' + id+ '/'+ formatedAddress, body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -34,7 +34,7 @@ export class LocationProvider {
    * 
    */
   getLocation() {
-    return this.http.get(this.liveUrl + 'user/allLocation')
+    return this.http.get(this.devUrl + 'user/allLocation')
       .map((response: Response) => {
         const locations = response.json().obj
         let transformedLocation: Location[] = [];

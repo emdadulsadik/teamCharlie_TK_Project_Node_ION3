@@ -11,7 +11,9 @@ import { ContactPage } from '../pages/contact/contact';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { UsertabsPage } from '../pages/usertabs/usertabs';
-
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -67,6 +69,9 @@ import { TimelineProvider } from '../providers/timeline/timeline';
     LocationProvider,
     FacebookProvider,
     Facebook,
+    File,
+    Camera,
+    FileTransfer,
     PlaceServiceProvider,
     ImageUploadProvider,
     SetActivitiesProvider,

@@ -19,7 +19,6 @@ const userSignupRoutes = require('./routes/signup');
 const userSigninRoutes = require('./routes/signin');
 const userLocationRoutes = require('./routes/location');
 const userActivitiesRoutes = require('./routes/activities');
-
 const imageUpload = require('./routes/imageUpload');
 
 const UPLOAD_PATH = 'uploads';
@@ -35,8 +34,8 @@ var storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const app = express();
-mongoose.connect('mongodb://heroku_kv48wt3p:8phg6c6hl8k337vmgoj71gvcql@ds157818.mlab.com:57818/heroku_kv48wt3p');
-// mongoose.connect('localhost:27017/social-life-tracker');
+// mongoose.connect('mongodb://heroku_c7lls0v1:7in9kr2rconrnamhos01mhorgn@ds113282.mlab.com:13282/heroku_c7lls0v1');
+mongoose.connect('localhost:27017/social-life-tracker');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
