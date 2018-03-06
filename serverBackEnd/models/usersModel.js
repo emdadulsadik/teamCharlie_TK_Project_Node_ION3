@@ -52,7 +52,6 @@ var userSchema = new Schema({
 	activity : [{type: Schema.Types.ObjectId, ref:'Activity' }],
 	created: {type: Date,  default: Date.now }
 });
-
 userSchema.plugin(mongooseUniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);

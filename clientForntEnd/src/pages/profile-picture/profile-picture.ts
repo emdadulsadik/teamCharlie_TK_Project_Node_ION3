@@ -95,14 +95,14 @@ export class ProfilePicturePage {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
       sourceType: sourceType,
-      saveToPhotoAlbum: false,
-      correctOrientation: true
+
     };
 
     // Get the data of an image
     this.camera.getPicture(options).then((imagePath) => {
       let modal = this.modalCtrl.create('UploadModalPage', {
-        data: imagePath
+        // data: imagePath
+         data: 'data:image/jpeg;base64,' + imagePath
       });
       modal.present();
       modal.onDidDismiss(data => {

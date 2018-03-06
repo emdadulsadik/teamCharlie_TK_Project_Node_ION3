@@ -11,6 +11,8 @@ import {
   ImageUploadProvider
 } from '../../providers/image-upload/image-upload';
 
+import { Storage } from '@ionic/storage';
+
 @IonicPage()
 @Component({
   selector: 'page-upload-modal',
@@ -21,18 +23,27 @@ export class UploadModalPage {
   imageData: any;
   desc: string;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, private viewCtrl: ViewController, private imagesProvider: ImageUploadProvider) {
+  constructor(public navCtrl: NavController,
+     private navParams: NavParams,
+      private viewCtrl: ViewController,
+       private imagesProvider: ImageUploadProvider,
+       private storage: Storage) {
     this.imageData = this.navParams.get('data');
   }
 
   saveImage() {
-    this.imagesProvider.uploadImage(this.imageData, this.desc).then(res => {
-      this.viewCtrl.dismiss({
-        reload: true
-      });
-    }, err => {
-      this.dismiss();
+       this.storage.get('userId').then((userId)=>{
+        this.imagesProvider.uploadImage(this.imageData, this.desc, userId).then(res => {
+          this.viewCtrl.dismiss({
+            reload: true
+          });
+        }, err => {
+          this.dismiss();
+        });
     });
+    
+   
+
   }
 
   dismiss() {
